@@ -2,28 +2,23 @@
     <script>
     $(document).ready(function() {
         $("#layerModal").on("click",function(){
-    		// fn_selectContentsPop();
+    		fn_selectContentsPop();
     	});
     });
 
     var fn_selectContentsPop = function(){
-		var url = "<c:url value="/commonCode/popup" />";
+		var url = "<c:url value="/member/edit?popupYN=Yes" />";
 		common.layerPopup(url,"#myModal");
 	};
     </script>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <form role="form" method="POST" action="<c:url value='/commonCode/delete' />">
-					<input type="hidden" name="forwardView" value="/commonCode/list">                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Advanced Tables
 							<button id="layerModal" class="btn btn-primary btn-sm">
-                            	Launch Demo Modal with Ajax and Popup
-                            </button>
-							<button type="submit" class="btn btn-primary btn-sm">
-                            	Delete
+                            	Launch Demo Modal with Ajex and Titles
                             </button>
                         </div>
                         <!-- /.panel-heading -->
@@ -33,33 +28,32 @@
                                     <thead>
                                         <tr>
 											<th><input type="checkbox" id="selecctall" /></th>
-                                            <th>COMMON_CODE_ID</th>
+                                            <th>MEMBER_ID</th>
                                             <th>NAME</th>
+                                            <th>CELLPHONE</th>
+                                            <th>EMAIL</th>
                                             <th>Update</th>
-                                            <th>Parent List</th>
-                                            <th>Child List</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 										<c:forEach items="${resultList}" var="resultData" varStatus="loop">
 	                                        <tr class="${(loop.index+1)%2 == 2 ? 'odd gradeX' : 'even gradeC'}">
-												<td><input type="checkbox" class="checkbox" name="COMMON_CODE_ID" value="${resultData.COMMON_CODE_ID}" /></td>
+												<td><input type="checkbox" class="checkbox" name="MEMBER_SEQ" value="${resultData.MEMBER_SEQ}" /></td>
 												<td>
-													<a href="<c:url value="/commonCode/read?COMMON_CODE_ID=${resultData.COMMON_CODE_ID}" />">
-													${resultData.COMMON_CODE_ID}</a>
+													<a href="<c:url value="/member/read?MEMBER_SEQ=${resultData.MEMBER_SEQ}" />">
+													${resultData.MEMBER_ID}</a>
 												</td>
 												<td>${resultData.NAME}</td>
+												<td>${resultData.CELLPHONE}</td>
+												<td>${resultData.EMAIL}</td>
 												<td>
-													<a href="<c:url value="/commonCode/update?COMMON_CODE_ID=${resultData.COMMON_CODE_ID}&forwardView=/commonCode/edit" />">
+													<a href="<c:url value="/member/update?MEMBER_SEQ=${resultData.MEMBER_SEQ}&forwardView=/member/edit" />">
 													Update</a>
 												</td>
 												<td>
-													<a href="<c:url value="/commonCode/list?COMMON_CODE_ID=${resultData.PARENT_COMMON_CODE_ID}" />">
-													Parent(${resultData.PARENT_COMMON_CODE_ID})</a>
-												</td>
-												<td>
-													<a href="<c:url value="/commonCode/list?PARENT_COMMON_CODE_ID=${resultData.COMMON_CODE_ID}" />">
-													Child (${resultData.NAME})</a>
+													<a href="<c:url value="/member/delete?MEMBER_SEQ=${resultData.MEMBER_SEQ}&forwardView=/member/list" />">
+													Delete</a>
 												</td>
 	                                        </tr>
                                         </c:forEach>
@@ -71,11 +65,11 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    </form>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+          	<form id=""></form>
 	<!-- Modal -->        
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	</div>
