@@ -10,6 +10,7 @@
 			MEMBER_SEQ <!-- 회원_SEQ -->
 			, MEMBER_ID <!-- 회원 ID -->
 			, PASSWORD <!-- 암호 -->
+			, CRYPT_PASSWORD	<!-- 암호화된 암호 -->
 			, NAME <!-- 명칭 -->
 			, EMAIL <!-- EMAIL -->
 			, CELLPHONE <!-- 휴대폰번호 -->
@@ -30,16 +31,30 @@
 			MEMBER_SEQ <!-- 회원_SEQ -->
 			, MEMBER_ID <!-- 회원 ID -->
 			, PASSWORD <!-- 암호 -->
-			, NAME <!-- 명칭 -->
+			, CRYPT_PASSWORD	<!-- 암호화된 암호 -->
+			, MEMBER.NAME <!-- 명칭 -->
 			, EMAIL <!-- EMAIL -->
 			, CELLPHONE <!-- 휴대폰번호 -->
-			, ORGANIZATION_SEQ <!-- 조직 일련번호 -->
+			, MEMBER.ORGANIZATION_SEQ <!-- 조직 일련번호 -->
 			, REGISTER_SEQ <!-- 등록자SEQ -->
 			, REGISTRY_DATE <!-- 등록일자 -->
 			, MODIFIER_SEQ <!-- 수정자_SEQ -->
 			, MODIFY_DATE <!-- 수정일자 -->
-		from CIP_MEMBER
-		where MEMBER_SEQ = #{MEMBER_SEQ}
+			, ORGANIZATION.NAME ORGANIZATION_NAME
+		from CIP_MEMBER MEMBER
+			, CIP_ORGANIZATION ORGANIZATION 
+		<where>
+		    and MEMBER.ORGANIZATION_SEQ = ORGANIZATION.ORGANIZATION_SEQ
+			and MEMBER_SEQ = #{MEMBER_SEQ}
+		    <!-- choose>	using by CustomizeUserDetailsService.java
+		        <when test="MEMBER_ID != null">
+					and MEMBER_ID = #{MEMBER_ID}
+		        </when>
+		        <when test="MEMBER_SEQ != null">
+					and MEMBER_SEQ = #{MEMBER_SEQ}
+		        </when>
+		    </choose-->
+		</where>
 	</select>
 
 	<insert id="merge" parameterType="Map">
@@ -50,6 +65,7 @@
 		    UPDATE SET
 				MEMBER_ID = #{MEMBER_ID} <!-- 회원 ID -->
 				, PASSWORD = #{PASSWORD} <!-- 암호 -->
+				, CRYPT_PASSWORD = #{CRYPT_PASSWORD}	<!-- 암호화된 암호 -->
 				, NAME = #{NAME} <!-- 명칭 -->
 				, EMAIL = #{EMAIL} <!-- EMAIL -->
 				, CELLPHONE = #{CELLPHONE} <!-- 휴대폰번호 -->
@@ -61,6 +77,7 @@
 				MEMBER_SEQ <!-- 회원_SEQ -->
 				, MEMBER_ID <!-- 회원 ID -->
 				, PASSWORD <!-- 암호 -->
+				, CRYPT_PASSWORD	<!-- 암호화된 암호 -->
 				, NAME <!-- 명칭 -->
 				, EMAIL <!-- EMAIL -->
 				, CELLPHONE <!-- 휴대폰번호 -->
@@ -74,6 +91,7 @@
 				#{MEMBER_SEQ} <!-- 회원_SEQ -->
 				, #{MEMBER_ID} <!-- 회원 ID -->
 				, #{PASSWORD} <!-- 암호 -->
+				, #{CRYPT_PASSWORD}	<!-- 암호화된 암호 -->
 				, #{NAME} <!-- 명칭 -->
 				, #{EMAIL} <!-- EMAIL -->
 				, #{CELLPHONE} <!-- 휴대폰번호 -->

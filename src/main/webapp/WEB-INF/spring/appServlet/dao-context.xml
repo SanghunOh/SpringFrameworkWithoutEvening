@@ -6,5 +6,55 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="minIdle" value="${jdbc.minIdle}"/>
+		<property name="maxIdle" value="${jdbc.maxIdle}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"/>
+	</bean>
 
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:mail.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="WEB-INF/sqlmap/oracle/*.xml" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession" />
+	</bean>
+
+		<!-- PlatformTransactionManager Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<aop:config>
+		<aop:pointcut id="allServices"
+			expression="execution(* 
+		com.clustering.project.service.*.save*(..))" />
+		<aop:advisor pointcut-ref="allServices" advice-ref="txAdvice" />
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" />
+			<tx:method name="delete*" />
+			<tx:method name="get*" read-only="true" />
+			<!-- tx:method name="*" / -->
+		</tx:attributes>
+	</tx:advice>
 </beans>
