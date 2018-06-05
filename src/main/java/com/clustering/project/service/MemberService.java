@@ -6,15 +6,18 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clustering.project.dao.ShareDao;
+import com.clustering.project.dao.MemberDao;
 import com.clustering.project.util.CommonUtil;
 
 @Service
 public class MemberService {
 
-	@Autowired
-	private ShareDao dao;
+//	@Autowired
+//	private ShareDao dao;
 	
+	@Autowired
+	private MemberDao dao;
+
 	@Autowired
 	private CommonUtil commonUtil;
 
@@ -46,7 +49,7 @@ public class MemberService {
 		
 		String sqlMapId = "member.merge";
 
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+//		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "member.read";
 		
@@ -59,12 +62,12 @@ public class MemberService {
 		// delete child record authority
 		String sqlMapId = "authorityRmember.delete";
 
-		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
+//		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
 
 		// delete Mother record authority
 		sqlMapId = "member.delete";
 
-		resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
+//		resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
 
 		// get Member List
 		sqlMapId = "member.list";
