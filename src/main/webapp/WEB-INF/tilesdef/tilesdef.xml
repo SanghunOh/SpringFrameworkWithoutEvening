@@ -6,9 +6,40 @@
 
 <tiles-definitions>
 
-	<!-- home by user -->
-	<definition name="home" template="/WEB-INF/views/template/layout_user_main.jsp">
-		<put-attribute name="layout.header" value="Here header" />
+	<!-- User template -->
+	<definition name="layout.user" template="/WEB-INF/views/template/layout_user_main.jsp">
+		<put-attribute name="layout.header"
+			value="/WEB-INF/views/template/header.jsp" />
+	    <put-attribute name="layout.left"
+			value="/WEB-INF/views/template/user_left.jsp" />
+	    <put-attribute name="layout.top"
+			value="/WEB-INF/views/template/user_top.jsp" />
    	</definition>
+	
+	<!-- home by user -->
+	<definition name="*" extends="layout.user">
+		<put-attribute name="layout.title" value="{1}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}.jsp" />
+	</definition>
+
+	<!-- shared view uri by user -->
+	<definition name="/*/*" extends="layout.user">
+		<put-attribute name="layout.title" value="{1} > {2}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+	
+	<!-- organization >
+	<definition name="/organization/list" extends="layout.user">
+		<put-attribute name="layout.title" value="member > list" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/organization/list.jsp" />
+	</definition>
+	<definition name="/organization/edit" extends="layout.user">
+		<put-attribute name="layout.title" value="member > edit" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/organization/edit.jsp" />
+	</definition>
+	<definition name="/organization/read" extends="layout.user">
+		<put-attribute name="layout.title" value="member > read" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/organization/read.jsp" />
+	</definition-->
 	
 </tiles-definitions>
