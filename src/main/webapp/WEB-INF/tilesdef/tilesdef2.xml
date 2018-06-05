@@ -38,20 +38,7 @@
 			value="/WEB-INF/views/template/user_top.jsp" />
    	</definition>
 
-	<!-- home by user >
-	<definition name="home" template="/WEB-INF/views/template/layout_user_main.jsp">
-		<put-attribute name="layout.title" value="template home " />
-		<put-attribute name="layout.header" value="/WEB-INF/views/template/header.jsp" />
-	    <put-attribute name="layout.left" value="/WEB-INF/views/template/user_left.jsp" />
-	    <put-attribute name="layout.top" value="/WEB-INF/views/template/user_top.jsp" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/.jsp" />
-   	</definition>
-
-	<definition name="home" extends="layout.user">
-		<put-attribute name="layout.title" value="Here home" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/home.jsp" />
-	</definition-->
-
+	<!-- home by user -->
 	<definition name="*" extends="layout.user">
 		<put-attribute name="layout.title" value="{1}" />
 		<put-attribute name="layout.body" value="/WEB-INF/views/{1}.jsp" />

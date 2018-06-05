@@ -15,12 +15,42 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<!-- tiles Configuration -->
+	<beans:bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tilesdef/tilesdef.xml</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+	</beans:bean>
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory >
+	<beans:bean id="tilesViewResolver"
+        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="viewClass">
+            <beans:value>
+                org.springframework.web.servlet.view.tiles3.TilesView
+            </beans:value>
+        </beans:property>
+        <beans:property name="order" value="1"/>
+    </beans:bean-->
+
+	<!-- Popup ViewResolver >
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
+		<beans:property name="order" value="2" />
+	</beans:bean -->	
+
 	<context:component-scan base-package="com.clustering.project" />
 
 	<!-- add for scaning any context configration -->	
