@@ -110,7 +110,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Organization<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<c:url value='/organization/list' />">Organization List</a>
+                                    <a href="#">Organization List</a>
                                 </li>
                                 <li>
                                     <a href="<c:url value='/organization/edit' />">Organization Edit</a>
@@ -122,10 +122,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Member<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<c:url value='/member/list' />">Member List</a>
+                                    <a href="<c:url value='/member?action=list' />">Member List</a>
                                 </li>
                                 <li>
-                                    <a href="<c:url value='/member/edit' />">Member Edit</a>
+                                    <a href="<c:url value='/member?action=edit' />">Member Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

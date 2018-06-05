@@ -26,4 +26,26 @@
 	<!-- add for scaning any context configration -->	
 	<context:annotation-config/>
 
+	<beans:bean id="organizationBean" class="com.clustering.project.javabean.OrganizationBean">
+		<beans:property name="ORGANIZATION_SEQ" value="555-55555-UUID555555" />
+		<beans:property name="PARENT_ORGANIZATION_SEQ" value="111-1111-UUID1111111" />
+		<!-- Occured Error -->
+		<!-- beans:property name="DI_SEQ" value="123-4567-UUID890" / -->
+	</beans:bean>
+	
+	<!-- constructor DI  -->
+	<beans:bean id="organizationService" class="com.clustering.project.service.OrganizationService">
+		<beans:constructor-arg ref="commonCodeDao"/>
+	</beans:bean>
+	
+	<!-- Spring will dynamically “inject” the implemenations with setter way -->
+	<beans:bean id="commonCodeDao" class="com.clustering.project.dao.CommonCodeDao" />
+
+	<!-- DI setter --> 
+	<beans:bean id="commonCodeService" class="com.clustering.project.service.CommonCodeService">
+		<beans:property name="dao">
+		    <beans:ref bean="commonCodeDao" />
+		</beans:property>
+	</beans:bean>
+			
 </beans:beans>
