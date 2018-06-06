@@ -49,7 +49,7 @@ public class MemberService {
 		
 		String sqlMapId = "member.merge";
 
-//		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "member.read";
 		
@@ -62,12 +62,12 @@ public class MemberService {
 		// delete child record authority
 		String sqlMapId = "authorityRmember.delete";
 
-//		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
 
 		// delete Mother record authority
 		sqlMapId = "member.delete";
 
-//		resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
+		resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
 
 		// get Member List
 		sqlMapId = "member.list";

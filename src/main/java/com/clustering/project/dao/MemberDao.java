@@ -27,9 +27,21 @@ public class MemberDao{
     }
 
 	public Object getObject(String sqlMapId, Object dataMap) {
-		Map<String, Object> result = null;	//sqlSession.selectOne(sqlMapId, dataMap);
+		Map<String, Object> result = null;
 		
 		return result;
 	}
-    
+
+	public Object saveObject(String sqlMapId, Object dataMap) {
+		Integer result = null;
+		
+		return result;
+	}
+
+	public Object deleteObject(String sqlMapId, Object dataMap) {
+		
+		Integer result = null;
+		return result;
+	}
+
 }
