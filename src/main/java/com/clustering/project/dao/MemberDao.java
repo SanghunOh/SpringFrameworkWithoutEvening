@@ -27,9 +27,10 @@ public class MemberDao{
     }
 
 	public Object getObject(String sqlMapId, Object dataMap) {
-		Map<String, Object> result = null;
-		
-		return result;
+		String memberSeq = (String) ((Map)dataMap).get("MEMBER_SEQ");
+    	String query = "select * from CIP_MEMBER "
+    			+ " where MEMBER_SEQ = '" + memberSeq +"'";
+    	return this.jdbcTemplate.queryForObject(query, Map.class);
 	}
 
 	public Object saveObject(String sqlMapId, Object dataMap) {
