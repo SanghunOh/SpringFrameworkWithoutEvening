@@ -19,18 +19,20 @@ public class MemberDao{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 	
-    public List<Object> getList(String sqlMapId, Object dataMap){
+    public Object getList(String sqlMapId, Object dataMap){
     	String query = "select * from CIP_MEMBER "
     			+ "where 1 = 1 "
     			+ "order by NAME" ;
-    	return this.jdbcTemplate.queryForObject(query, List.class);
+    	Object result = this.jdbcTemplate.queryForList(query);
+    	return result;
     }
 
 	public Object getObject(String sqlMapId, Object dataMap) {
 		String memberSeq = (String) ((Map)dataMap).get("MEMBER_SEQ");
     	String query = "select * from CIP_MEMBER "
     			+ " where MEMBER_SEQ = '" + memberSeq +"'";
-    	return this.jdbcTemplate.queryForObject(query, Map.class);
+    	Object result = this.jdbcTemplate.queryForMap(query);
+    	return result;
 	}
 
 	public Object saveObject(String sqlMapId, Object dataMap) {

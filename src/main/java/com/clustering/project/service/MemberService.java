@@ -21,10 +21,10 @@ public class MemberService {
 	@Autowired
 	private CommonUtil commonUtil;
 
-	public List<Object> getList(Object dataMap) {
+	public Object getList(Object dataMap) {
 		String sqlMapId = "member.list";
 
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
@@ -72,7 +72,7 @@ public class MemberService {
 		// get Member List
 		sqlMapId = "member.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
