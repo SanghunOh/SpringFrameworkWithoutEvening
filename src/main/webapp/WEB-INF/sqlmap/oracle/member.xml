@@ -83,11 +83,16 @@
 				, #{REGISTER_SEQ} <!-- 수정자_SEQ -->
 				, sysdate <!-- 수정일자 -->
 			)
-	    <!-- selectKey resultType="int" keyProperty="cnt" order="BEFORE">
-			SELECT count(1)
+		<selectKey resultType="String" keyProperty="_SEQ" order="AFTER">
+			SELECT MEMBER_SEQ
 			FROM CIP_MEMBER
 			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
-		</selectKey -->
+		</selectKey>
+	    <!--selectKey resultType="String" keyProperty="MEMBER_SEQ" order="AFTER">< order="BEFORE" >
+			SELECT MEMBER_SEQ
+			FROM CIP_MEMBER
+			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
+		</selectKey-->
 
 	</insert>
 
