@@ -1,23 +1,19 @@
 package com.clustering.project.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clustering.project.dao.MemberDao;
+import com.clustering.project.dao.ShareDao;
 import com.clustering.project.util.CommonUtil;
 
 @Service
 public class MemberService {
 
-//	@Autowired
-//	private ShareDao dao;
-	
 	@Autowired
-	private MemberDao dao;
-
+	private ShareDao dao;
+	
 	@Autowired
 	private CommonUtil commonUtil;
 

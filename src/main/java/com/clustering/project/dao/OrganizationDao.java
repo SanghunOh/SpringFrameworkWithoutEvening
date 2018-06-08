@@ -1,6 +1,5 @@
 package com.clustering.project.dao;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -10,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MemberDao{
+public class OrganizationDao{
 
 	private JdbcTemplate jdbcTemplate;
     
@@ -20,7 +19,7 @@ public class MemberDao{
     }
 	
     public Object getList(String sqlMapId, Object dataMap){
-    	String query = "select * from CIP_MEMBER "
+    	String query = "select * from CIP_ORGANIZATION "
     			+ "where 1 = 1 "
     			+ "order by NAME" ;
     	Object result = this.jdbcTemplate.queryForList(query);
@@ -28,9 +27,9 @@ public class MemberDao{
     }
 
 	public Object getObject(String sqlMapId, Object dataMap) {
-		String memberSeq = (String) ((Map)dataMap).get("MEMBER_SEQ");
-    	String query = "select * from CIP_MEMBER "
-    			+ " where MEMBER_SEQ = '" + memberSeq +"'";
+		String memberSeq = (String) ((Map)dataMap).get("ORGANIZATION_SEQ");
+    	String query = "select * from CIP_ORGANIZATION "
+    			+ " where ORGANIZATION_SEQ = '" + memberSeq +"'";
     	Object result = this.jdbcTemplate.queryForMap(query);
     	return result;
 	}
