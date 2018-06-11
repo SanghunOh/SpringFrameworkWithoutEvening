@@ -20,7 +20,7 @@ public class ShareDao{
 	}
 
 	public Object getObject(String sqlMapId, Object dataMap) {
-		Map<String, Object> result = sqlSession.selectOne(sqlMapId, dataMap);
+		Object result = sqlSession.selectOne(sqlMapId, dataMap);
 		
 		return result;
 	}
