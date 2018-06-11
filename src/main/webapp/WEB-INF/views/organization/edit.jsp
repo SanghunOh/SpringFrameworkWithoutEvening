@@ -192,7 +192,7 @@
                                     <form role="form" method="POST" action="<c:url value='/organization/read' />">
 										<div class="form-group">
 										    <label for="disabledSelect">ORGANIZATION_SEQ Disabled input </label>
-										    <input class="form-control" type="text" name="ORGANIZATION_SEQ" value="33333-3333-UUID333333333333" readonly>
+										    <input class="form-control" type="text" name="ORGANIZATION_SEQ" value="" readonly>
                                             <p class="help-block">using UUID method with disabled</p>
 										</div>
                                         <div class="form-group">
@@ -211,7 +211,7 @@
                                         </div>
                                         <div class="form-group">
 										    <label for="disabledSelect">PARENT_ORGANIZATION_SEQ Disabled input </label>
-										    <input class="form-control" type="text" name="PARENT_ORGANIZATION_SEQ" value="22222-2222-UUID222222222222" readonly>
+										    <input class="form-control" type="text" name="PARENT_ORGANIZATION_SEQ" value="UUID-11-CIP7" readonly>
                                             <p class="help-block">using Parent UUID method with disabled</p>
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit Button</button>
