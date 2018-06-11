@@ -34,6 +34,7 @@ $(function(){
                                         <button type="submit" class="btn btn-default">Add Button</button>
 										<a href="<c:url value='/organization/list?PARENT_ORGANIZATION_SEQ=${resultMap.PARENT_ORGANIZATION_SEQ}' />"> Forware Lis</a>
                                         <button class="btn btn-default" id="ForwareList">Forware List</button>
+                                        <button type="submit" class="btn btn-default" formaction="<c:url value='/organization/list' />">Other Forware List</button>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
