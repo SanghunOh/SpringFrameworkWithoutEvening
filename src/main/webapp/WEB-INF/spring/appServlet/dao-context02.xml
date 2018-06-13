@@ -26,10 +26,6 @@
 		</property>
 	</bean>
 
-    <bean id="organizationDao" class="com.clustering.project.dao.OrganizationDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-    
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="WEB-INF/sqlmap/oracle/*.xml" />
@@ -37,5 +33,5 @@
 
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSession" />
-	</bean>    
+	</bean>
 </beans>

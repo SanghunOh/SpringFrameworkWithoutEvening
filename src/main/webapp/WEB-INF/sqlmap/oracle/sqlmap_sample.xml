@@ -11,6 +11,12 @@
 	<insert id="merge" parameterType="Map">
 	</insert>
 
+	<insert id="insert" parameterType="Map">
+	</insert>
+
+	<update id="update" parameterType="Map">
+	</update>
+
 	<delete id="delete" parameterType="Map">
 	</delete>
 </mapper>

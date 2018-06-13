@@ -18,10 +18,10 @@ public class CommonCodeService {
 	@Autowired
 	private CommonUtil commonUtil;
 	
-	public List<Object> getList(Object dataMap) {
+	public Object getList(Object dataMap) {
 		String sqlMapId = "commonCode.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 
 		return resultObject;
 	}
@@ -60,7 +60,7 @@ public class CommonCodeService {
 
 		sqlMapId = "commonCode.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}

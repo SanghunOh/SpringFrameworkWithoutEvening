@@ -43,6 +43,17 @@
 	</select>
 
 	<insert id="merge" parameterType="Map">
+		<selectKey keyProperty="MEMBER_SEQ" resultType="String" order="AFTER">	<!-- order="BEFORE" --> 
+			SELECT MEMBER_SEQ
+			FROM CIP_MEMBER
+			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
+		</selectKey>
+	    <!--selectKey resultType="String" keyProperty="MEMBER_SEQ" order="AFTER">
+			SELECT MEMBER_SEQ
+			FROM CIP_MEMBER
+			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
+		</selectKey-->
+	
 		MERGE INTO CIP_MEMBER CIP1
 		     USING (SELECT #{MEMBER_SEQ} AS MEMBER_SEQ FROM DUAL) CIP2
 		        ON (CIP1.MEMBER_SEQ = CIP2.MEMBER_SEQ)
@@ -83,12 +94,6 @@
 				, #{REGISTER_SEQ} <!-- 수정자_SEQ -->
 				, sysdate <!-- 수정일자 -->
 			)
-	    <!-- selectKey resultType="int" keyProperty="cnt" order="BEFORE">
-			SELECT count(1)
-			FROM CIP_MEMBER
-			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
-		</selectKey -->
-
 	</insert>
 
 	<delete id="delete" parameterType="Map">

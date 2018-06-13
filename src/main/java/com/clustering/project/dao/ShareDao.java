@@ -13,14 +13,14 @@ public class ShareDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Object> getList(String sqlMapId, Object dataMap) {
-		List<Object> result = sqlSession.selectList(sqlMapId, dataMap);
+	public Object getList(String sqlMapId, Object dataMap) {
+		Object result = sqlSession.selectList(sqlMapId, dataMap);
 
 		return result;
 	}
 
 	public Object getObject(String sqlMapId, Object dataMap) {
-		Map<String, Object> result = sqlSession.selectOne(sqlMapId, dataMap);
+		Object result = sqlSession.selectOne(sqlMapId, dataMap);
 		
 		return result;
 	}

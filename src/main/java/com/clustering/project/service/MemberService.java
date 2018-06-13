@@ -1,6 +1,5 @@
 package com.clustering.project.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,10 @@ public class MemberService {
 	@Autowired
 	private CommonUtil commonUtil;
 
-	public List<Object> getList(Object dataMap) {
+	public Object getList(Object dataMap) {
 		String sqlMapId = "member.list";
 
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
@@ -46,7 +45,7 @@ public class MemberService {
 		
 		String sqlMapId = "member.merge";
 
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object resultKey = dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "member.read";
 		
@@ -69,7 +68,7 @@ public class MemberService {
 		// get Member List
 		sqlMapId = "member.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}

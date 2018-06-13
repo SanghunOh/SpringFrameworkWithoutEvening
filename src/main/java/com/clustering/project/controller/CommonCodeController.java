@@ -54,7 +54,7 @@ public class CommonCodeController {
 		} else if ("read".equalsIgnoreCase(action)) {
 			resultMap = (Map<String, Object>) service.getObject(paramMap);
 		} else if ("list".equalsIgnoreCase(action)) {
-			resultList = service.getList(paramMap);
+			resultList = (List<Object>) service.getList(paramMap);
 		} else if ("delete".equalsIgnoreCase(action)) {
 			resultList = (List<Object>) service.deleteObject(paramMap);
 		} 
