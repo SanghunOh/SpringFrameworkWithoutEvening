@@ -15,7 +15,8 @@
 	    <intercept-url pattern="/commonCode/edit" access="hasAnyRole('ROLE_GUEST', 'ROLE_ADMIN') or hasIpAddress('132.162.1.0/24')" />
 		<intercept-url pattern="/member/list" access="isFullyAuthenticated()" />
 	    <intercept-url pattern="/*/edit" access="hasRole('ROLE_MANAGER')" />
-	    <!-- intercept-url pattern="/**" access="permitAll()" / -->
+	    <intercept-url pattern="/**" access="permitAll()" />
+	    <intercept-url pattern="/**" access="denyAll()" />
 	    <!-- intercept-url pattern="/**" access="isFullyAuthenticated()" / -->
 
 		<!-- 로그인 관련 설정 -->
