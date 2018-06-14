@@ -1,4 +1,32 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <script>
+	var fn_setFormTagList = function(url, id, params) {
+		var obj = JSON.stringify(params);
+		$.ajax({
+	        type : "POST",
+	        url : url,
+	        data : params,
+	        cache: false,
+	        success : function(data) {
+
+	        	var formTag = "Authority : ";
+		     	$.each(data, function(i,item){
+		     		formTag += item.AUTHORITY_ID+' : '+item.NAME + ', ';
+		   		});
+		     	formTag += formTag;
+		    },
+	        error : function(xhr, status, exception){
+	        	alert("Failure \n ("+status+")");
+				return false;
+	        }
+	    });
+	}
+
+	$(document).ready(function() {
+       // show Authorities with Ajax
+       fn_setFormTagList("<c:url value='/ws/authorityList' />", "authorityDIV", "${resultMap}");
+    });
+    </script>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">

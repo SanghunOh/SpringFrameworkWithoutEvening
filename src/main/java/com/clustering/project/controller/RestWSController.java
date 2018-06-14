@@ -47,7 +47,7 @@ public class RestWSController {
 		} else if ("organizationList".equalsIgnoreCase(action)) {
 			resultList = (List<Object>) organizationService.getList(paramMap);
 		} 
- 
+
 
 		return resultList;	
 	}

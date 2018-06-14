@@ -6,7 +6,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<import resource="appServlet/dao-context.xml" />
 	<import resource="appServlet/mail-context.xml" />
-	<!-- <import resource="appServlet/security-context00_Base.xml" /> -->
+	<import resource="appServlet/security-context00_Base.xml" />
 	<!-- <import resource="appServlet/security-context01_attribute.xml" /> -->
-	<import resource="appServlet/security-context02_baseDB.xml" />
+	<!-- <import resource="appServlet/security-context02_baseDB.xml" /> -->
 </beans>
