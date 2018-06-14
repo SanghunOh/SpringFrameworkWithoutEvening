@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class RestWSController {
 
 	// Restful
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST }, produces = "application/json")
-	public Object actionMethod(Map<String, Object> paramMap, @PathVariable String action) {
+	public Object actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action) {
 		
 		List<Object> resultList = new ArrayList<Object>();
 

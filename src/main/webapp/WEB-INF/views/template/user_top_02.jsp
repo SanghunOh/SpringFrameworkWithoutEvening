@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -13,11 +12,11 @@
 
 <ul class="nav navbar-top-links navbar-right">
   	<!-- User Expression -->
-  	<sec:authentication property="principal" var="principalBean"/>
+  	<c:set var="principalName" value="${pageContext.request.userPrincipal.name }"/>
         	
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <sec:authorize access="isAuthenticated()">${principalBean.username }</sec:authorize> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> ${principalName} <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
         

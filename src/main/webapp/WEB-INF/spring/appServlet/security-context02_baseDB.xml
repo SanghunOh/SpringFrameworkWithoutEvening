@@ -47,8 +47,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="SELECT MEMBER_SEQ, PASSWORD, 1 ENABLED FROM CIP_MEMBER WHERE MEMBER_ID = ?"
-				authorities-by-username-query="SELECT MEMBER_SEQ, AUTHORITY_ID FROM CIP_AUTHORITY_MEMBER WHERE MEMBER_SEQ = ?" />
+				users-by-username-query="SELECT MEMBER_SEQ as username, PASSWORD as password, 1 as enabled FROM CIP_MEMBER WHERE MEMBER_ID = ?"
+				authorities-by-username-query="SELECT MEMBER_SEQ as username, AUTHORITY_ID as authority FROM CIP_AUTHORITY_MEMBER WHERE MEMBER_SEQ = ?" />
 		</authentication-provider>
 	</authentication-manager>
 
