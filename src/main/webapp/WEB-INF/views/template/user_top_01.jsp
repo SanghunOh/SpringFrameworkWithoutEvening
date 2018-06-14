@@ -11,12 +11,9 @@
 <!-- /.navbar-header -->
 
 <ul class="nav navbar-top-links navbar-right">
-  	<!-- User Expression -->
-  	<c:set var="principalName" value="${pageContext.request.userPrincipal.name }"/>
-        	
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> ${principalName} <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
         

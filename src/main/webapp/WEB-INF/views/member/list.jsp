@@ -7,7 +7,7 @@
     });
 
     var fn_selectContentsPop = function(){
-		var url = "<c:url value="/member/edit?popupYN=Yes" />";
+		var url = "<c:url value='/member/edit?popupYN=Yes' />";
 		common.layerPopup(url,"#myModal");
 	};
     </script>
