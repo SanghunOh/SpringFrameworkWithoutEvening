@@ -11,3 +11,6 @@ INSERT into (    AUTHORITY_ID      , MEMBER_SEQ     , REGISTER_SEQ     , REGISTR
 values        
 (    ?      , ?     , ?     , sysdate     , ?     , sysdate    )    ,    
 (    ?      , ?     , ?     , sysdate     , ?     , sysdate    )						
+
+select * from CIP_MEMBER
+where Member_id = 'system';
