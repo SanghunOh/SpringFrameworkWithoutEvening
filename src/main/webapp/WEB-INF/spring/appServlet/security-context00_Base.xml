@@ -8,13 +8,13 @@
    	<http auto-config="true" use-expressions="true">
     	<!-- return boolean -->
 	    <intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
-	    <intercept-url pattern="/loginForm" access="permitAll" />
+	    <!-- <intercept-url pattern="/loginForm" access="permitAll" /> -->
 	</http>
 	
     <authentication-manager >
         <authentication-provider>
             <user-service>
-				<user name="member" password="member" authorities="ROLE_USER" />
+				<user name="member" password="12345" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
