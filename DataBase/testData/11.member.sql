@@ -101,5 +101,5 @@ select 'UUID-97219','Lonesome_Pine_Restaurant','Lonesome_Pine_Restaurant','Lones
 
 -- password = "123456" with BCryptPasswordEncoder() 
 update CIP_MEMBER
-set PASSWORD = '$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.';
+set CRYPT_PASSWORD = '$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.';
 
