@@ -17,6 +17,7 @@
 		<org.springframework.security-version>4.0.1.RELEASE</org.springframework.security-version>
 		<jackson.databind-version>2.4.5</jackson.databind-version>
 		<org.mybatis.version>3.3.0</org.mybatis.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 
