@@ -10,7 +10,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST" action="<c:url value='/organization/merge' />" enctype="multipart/form-data">
-                                    <!-- form role="form" method="POST" action="<c:url value='/organization/merge' />" -->
+                                    <!-- form role="form" method="POST" action="<c:url value='/sample_organization/file' />" -->
                                         <input type="hidden" name="forwardView" value="/organization/read">
                                         <input type="hidden" name="ORGANIZATION_SEQ" value="${resultMap.ORGANIZATION_SEQ }" >
                                         <div class="form-group">
