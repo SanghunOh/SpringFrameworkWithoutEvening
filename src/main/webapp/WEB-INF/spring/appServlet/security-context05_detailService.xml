@@ -45,19 +45,10 @@
 	</http>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="customAuthenticationProvider">
+		<authentication-provider user-service-ref="customizeUserDetailsService">
 		    <password-encoder hash="bcrypt" />
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="customAuthenticationProvider" class="com.clustering.project.security.CustomizeSecurityDaoImpl">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="rolePrefix" value="" />
-		<beans:property name="usersByUsernameQuery"
-			value="SELECT MEMBER_SEQ, MEMBER_ID, PASSWORD, NAME, EMAIL, 'true' ENABLED FROM CIP_MEMBER WHERE MEMBER_ID = ?" />
-		<beans:property name="authoritiesByUsernameQuery"
-			value="SELECT AUTHORITY_ID as AUTHORITYID FROM CIP_AUTHORITY_MEMBER WHERE MEMBER_SEQ = ?" />
-		<beans:property name="enableGroups" value="false" />
-	</beans:bean>
-
+	<beans:bean id="customizeUserDetailsService" class="com.clustering.project.security.CustomizeUserDetailsService" />
 </beans:beans>

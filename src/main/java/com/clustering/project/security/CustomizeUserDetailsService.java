@@ -36,18 +36,18 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 
 		dataMap.put("MEMBER_ID", username);
 		
-		Map<String, String> resultMember = (Map<String, String>) dao.getObject(sqlMapId, dataMap);
+		dataMap = (Map<String, Object>) dao.getObject(sqlMapId, dataMap);
 
 		// get Granted Authority
 		sqlMapId = "authorityRmember.list";
 
-		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
+		dataMap.put("MEMBER_SEQ", dataMap.get("MEMBER_SEQ"));
 		
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
 
 		List<GrantedAuthority> authorities = buildUserAuthority(resultAuthorities);
 
-		return buildUserForAuthentication(resultMember, authorities);
+		return new MemberInfo(dataMap, (Set<GrantedAuthority>) authorities);
 		
 
 	}

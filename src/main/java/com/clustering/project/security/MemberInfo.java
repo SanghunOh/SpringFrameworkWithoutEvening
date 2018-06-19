@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -33,6 +34,14 @@ public class MemberInfo implements UserDetails {
 	private String password; // Password
 	private Set<GrantedAuthority> authorities; // Roles by Member
 
+	public MemberInfo(Map<String, Object> resultMember, Set<GrantedAuthority> authorities) {
+		this.memberSeq = (String) resultMember.get("MEMBER_SEQ");
+		this.memberID = (String) resultMember.get("MEMBER_ID");
+		this.email = (String) resultMember.get("EMAIL");
+		this.memberName = (String) resultMember.get("NAME");
+		this.password = (String) resultMember.get("CRYPT_PASSWORD");
+		this.authorities = authorities;
+	}
 	public MemberInfo(String memberSeq, String memberID, String email, String MemberName,
 			String password, Collection<? extends GrantedAuthority> authorities) {
 		this.memberSeq = memberSeq;
