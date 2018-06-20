@@ -16,7 +16,7 @@
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-sign-in fa-fw"></i> Single Mailing</a>
+                        <li><a href="<c:url value='/mailing/sending' />"><i class="fa fa-sign-in fa-fw"></i> Single Mailing</a>
                         </li>
                         <li><a href="#"><i class="fa fa-random fa-fw"></i> Double Mailing</a>
                         </li>

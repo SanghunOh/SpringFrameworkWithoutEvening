@@ -22,14 +22,11 @@
 		<property name="locations">
 			<list>
 				<value>classpath:jdbc.properties</value>
+				<value>classpath:mail.properties</value>
 			</list>
 		</property>
 	</bean>
 
-    <bean id="organizationDao" class="com.clustering.project.dao.OrganizationDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-    
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="WEB-INF/sqlmap/oracle/*.xml" />
