@@ -49,7 +49,7 @@
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="customizeUserDetailsService">
-		    <password-encoder hash="bcrypt" />
+		    <!-- <password-encoder hash="bcrypt" /> -->
 		</authentication-provider>
 	</authentication-manager>
 
