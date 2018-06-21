@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>734</x>
-	<y>416</y>
+	<x>996</x>
+	<y>345</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-12-10 13:31:41</creation_date>
-			<updated_date>2016-05-31 19:37:49</updated_date>
+			<updated_date>2018-06-22 10:52:30</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -234,7 +234,7 @@
 		</word>
 		<word>
 			<id>4</id>
-			<length>40</length>
+			<length>200</length>
 			<decimal>null</decimal>
 			<array>false</array>
 			<array_dimension>null</array_dimension>

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.clustering.project.component.MapParamCollector;
@@ -29,12 +30,12 @@ public class MemberController {
 	private MemberService service;
 	
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView actionMethod(MapParamCollector requestMap, @PathVariable String action,
+	public ModelAndView actionMethod(MapParamCollector paramMethodMap, @PathVariable String action,
 			ModelAndView modelandView) {
 
 		String viewName = MAPPING + action ;
 
-		Map<Object, Object> paramMap = requestMap.getMap();
+		Map<Object, Object> paramMap = paramMethodMap.getMap();
 
 		String forwardView = (String) paramMap.get("forwardView") ;
 		String popupYN = (String) paramMap.get("popupYN") ;
