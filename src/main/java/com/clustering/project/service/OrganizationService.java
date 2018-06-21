@@ -34,21 +34,21 @@ public class OrganizationService{
 		return resultObject;
 	}
 
-	public Object saveObject(Map<String, Object> dataMap) {
-		String uniqueSequence = (String) dataMap.get("ORGANIZATION_SEQ");
+	public Object saveObject(Map<Object, Object> paramMap) {
+		String uniqueSequence = (String) paramMap.get("ORGANIZATION_SEQ");
 		
 		if("".equals(uniqueSequence)){
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
-		dataMap.put("ORGANIZATION_SEQ", uniqueSequence);
+		paramMap.put("ORGANIZATION_SEQ", uniqueSequence);
 		
 		String sqlMapId = "organization.merge";
 
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, paramMap);
 		
 		sqlMapId = "organization.read";
 		
-		Object resultObject = dao.getObject(sqlMapId, dataMap);
+		Object resultObject = dao.getObject(sqlMapId, paramMap);
 
 		return resultObject;
 	}

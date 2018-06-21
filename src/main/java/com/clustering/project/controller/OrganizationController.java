@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.clustering.project.component.MapParamCollector;
 import com.clustering.project.service.OrganizationService;
 
 /**
@@ -38,9 +39,9 @@ public class OrganizationController {
     
 	// Receive Parameters from Html Using @RequestParam Map with @PathVariable
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
+	public ModelAndView actionMethod(MapParamCollector paramMethodMap, @PathVariable String action,
 			ModelAndView modelandView, ModelMap modelMap) {
-
+		Map<Object, Object> paramMap = paramMethodMap.getMap();
 		String viewName = MAPPING + action;
 		String forwardView = (String) paramMap.get("forwardView") ;
 
