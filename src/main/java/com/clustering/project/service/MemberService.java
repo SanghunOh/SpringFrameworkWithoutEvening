@@ -1,5 +1,6 @@
 package com.clustering.project.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.clustering.project.dao.ShareDao;
 import com.clustering.project.util.CommonUtil;
+import com.clustering.project.util.Pagination;
 
 @Service
 public class MemberService {
@@ -23,6 +25,27 @@ public class MemberService {
 		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
+	}
+
+	public Object getListPagination(Object dataMap) {
+		Map<String, Object> resultMap = new HashMap<String, Object>() ;
+
+		String sqlMapId = "member.totalcount";
+
+		int totalCount = (int) dao.getObject(sqlMapId, dataMap);
+		int currentPage = 1 ; 
+		if(((Map<String,Object>) dataMap).get("curPage") != null) {
+			currentPage = Integer.valueOf(((Map<String, String>) dataMap).get("curPage"));
+		}
+		Pagination pagination = new Pagination(totalCount, currentPage);
+		resultMap.put("pagination", pagination);
+		
+		sqlMapId = "member.listpagination";
+		((Map<String, Object>) dataMap).put("pagination", pagination);
+		Object resultList = dao.getList(sqlMapId, dataMap);
+		resultMap.put("resultList", resultList);
+		
+		return resultMap;
 	}
 
 	public Object getObject(Object dataMap) {

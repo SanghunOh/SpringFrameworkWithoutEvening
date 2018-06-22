@@ -37,6 +37,9 @@
                                 <li>
                                     <a href="<c:url value='/member/edit' />">Member Edit</a>
                                 </li>
+                                <li>
+                                    <a href="<c:url value='/member/list_pagination' />">Member List Pagination</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

@@ -25,6 +25,26 @@
 		order by NAME
 	</select>
 
+	<select id="listpagination" resultType="Map" parameterType="Map">
+		select result.*
+		from (
+	        select rownum as rn
+	        	, member.* 
+	        from ( select * 
+				from CIP_MEMBER
+				order by NAME ) member
+		) result	
+		where result.rn between #{pagination.pageBegin} and #{pagination.pageEnd}
+	</select>
+
+	<select id="totalcount" resultType="integer" parameterType="Map">
+	    select count(MEMBER_SEQ)
+		from CIP_MEMBER
+		<![CDATA[
+		where 1 = 1
+		]]>
+	</select>
+
 	<select id="read" resultType="Map" parameterType="Map">
 		select 
 			MEMBER_SEQ <!-- 회원_SEQ -->
