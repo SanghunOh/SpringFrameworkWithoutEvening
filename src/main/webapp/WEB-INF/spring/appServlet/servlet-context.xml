@@ -60,7 +60,7 @@
 	<context:component-scan base-package="com.clustering.project" />
 
 	<!-- add for aspectj annotation -->	
-	<aop:aspectj-autoproxy proxy-target-class="false" expose-proxy="true"/>
+	<!-- <aop:aspectj-autoproxy proxy-target-class="false" expose-proxy="true"/> -->
 
 	<!-- add for scaning any context configration -->	
 	<context:annotation-config/>

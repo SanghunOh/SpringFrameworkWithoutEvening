@@ -2,9 +2,17 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
     xmlns:beans="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<debug />
+
+    <!-- <global-method-security pre-post-annotations="enabled"/> -->
+
+	<context:component-scan base-package="com.clustering.project" />
+	
    	<http use-expressions="true">
     <!-- EL(expression language) 표현식 -->
     	<!-- return boolean -->
@@ -39,25 +47,17 @@
 		    <cache-control/>
 		    <xss-protection/>
 		</headers>
-		
+
 		<!-- enable csrf protection -->
 		<csrf disabled="true" />
 	</http>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="customAuthenticationProvider">
-		    <password-encoder hash="bcrypt" />
+		<authentication-provider user-service-ref="customizeUserDetailsService">
+		    <!-- <password-encoder hash="bcrypt" /> -->
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean id="customAuthenticationProvider" class="com.clustering.project.security.CustomizeSecurityDaoImpl">
-		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="rolePrefix" value="" />
-		<beans:property name="usersByUsernameQuery"
-			value="SELECT MEMBER_SEQ, MEMBER_ID, PASSWORD, NAME, EMAIL, 'true' ENABLED FROM CIP_MEMBER WHERE MEMBER_ID = ?" />
-		<beans:property name="authoritiesByUsernameQuery"
-			value="SELECT AUTHORITY_ID as AUTHORITYID FROM CIP_AUTHORITY_MEMBER WHERE MEMBER_SEQ = ?" />
-		<beans:property name="enableGroups" value="false" />
-	</beans:bean>
+	<beans:bean id="customizeUserDetailsService" class="com.clustering.project.security.CustomizeUserDetailsService"/>
 
 </beans:beans>
