@@ -51,16 +51,12 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
 		List<GrantedAuthority> authorities = buildUserAuthority(resultAuthorities);
 
-<<<<<<< HEAD
 		return buildUserForAuthentication(resultMember, authorities);
 	}
 
 	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, List<GrantedAuthority> authorities) {
 		return new MemberInfo(resultMember.get("MEMBER_SEQ"), resultMember.get("MEMBER_ID"), resultMember.get("EMAIL"), 
 				resultMember.get("NAME"), resultMember.get("PASSWORD"), authorities);
-=======
-		return new MemberInfo(dataMap, (Set<GrantedAuthority>) authorities);
->>>>>>> refs/heads/SecurityWithService
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
