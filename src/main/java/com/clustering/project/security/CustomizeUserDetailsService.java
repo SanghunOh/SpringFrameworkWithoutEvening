@@ -19,13 +19,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.clustering.project.dao.ShareDao;
 
-@Service("userDetailsService")
+@Service
 public class CustomizeUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private ShareDao dao;
 
-	@Transactional(readOnly=true)
+//	@Transactional(readOnly=true)
 	@Override
 	public MemberInfo loadUserByUsername(final String username) throws UsernameNotFoundException {
 
@@ -33,21 +33,34 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 		
 		// get Member Information
 		String sqlMapId = "member.read";
-
 		dataMap.put("MEMBER_ID", username);
-		
+
+		Map<String, String> resultMember = (Map<String, String>) dao.getObject(sqlMapId, dataMap);
+        if (resultMember == null) {
+            throw new UsernameNotFoundException("User details not found with this username: " + username);
+        }
+        
+
 		dataMap = (Map<String, Object>) dao.getObject(sqlMapId, dataMap);
 
-		// get Granted Authority
 		sqlMapId = "authorityRmember.list";
+		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
 
 		dataMap.put("MEMBER_SEQ", dataMap.get("MEMBER_SEQ"));
 		
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
-
 		List<GrantedAuthority> authorities = buildUserAuthority(resultAuthorities);
 
+<<<<<<< HEAD
+		return buildUserForAuthentication(resultMember, authorities);
+	}
+
+	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, List<GrantedAuthority> authorities) {
+		return new MemberInfo(resultMember.get("MEMBER_SEQ"), resultMember.get("MEMBER_ID"), resultMember.get("EMAIL"), 
+				resultMember.get("NAME"), resultMember.get("PASSWORD"), authorities);
+=======
 		return new MemberInfo(dataMap, (Set<GrantedAuthority>) authorities);
+>>>>>>> refs/heads/SecurityWithService
 	}
 
 	private List<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {

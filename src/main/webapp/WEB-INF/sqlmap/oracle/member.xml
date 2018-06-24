@@ -45,15 +45,14 @@
 			, CIP_ORGANIZATION ORGANIZATION 
 		<where>
 		    and MEMBER.ORGANIZATION_SEQ = ORGANIZATION.ORGANIZATION_SEQ
-			and MEMBER_SEQ = #{MEMBER_SEQ}
-		    <!-- choose>	using by CustomizeUserDetailsService.java
+		    <choose>	<!-- using by CustomizeUserDetailsService.java -->
 		        <when test="MEMBER_ID != null">
 					and MEMBER_ID = #{MEMBER_ID}
 		        </when>
 		        <when test="MEMBER_SEQ != null">
 					and MEMBER_SEQ = #{MEMBER_SEQ}
 		        </when>
-		    </choose-->
+		    </choose>
 		</where>
 	</select>
 

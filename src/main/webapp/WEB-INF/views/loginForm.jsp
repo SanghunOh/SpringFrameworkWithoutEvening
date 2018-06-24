@@ -18,10 +18,10 @@
                         <form role="form" action="<c:url value='/j_spring_security_check' />" method='POST'>
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="member ID" name="email" type="text" autofocus>
+                                    <input class="form-control" placeholder="member ID" name="email" type="text" value="system_admin" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="12345">
                                 </div>
                                 <div class="checkbox">
                                     <label>
