@@ -22,7 +22,6 @@ public class MemberService {
 	@Autowired
 	private AuthorityRmemberService authorityRmemberService;
 
-	@Transactional
 	public List<Object> getList(Object dataMap) {
 		String sqlMapId = "member.list";
 
@@ -43,17 +42,18 @@ public class MemberService {
 		// Get Authorities By Member_seq
 		sqlMapId = "attachfile.list";
 		((Map) dataMap).put("SOURCE_UNIQUE_SEQ", ((Map) dataMap).get("MEMBER_SEQ"));
-		resultObject.put("attachFileList", dao.getList(sqlMapId, dataMap));
+//		resultObject.put("attachFileList", dao.getList(sqlMapId, dataMap));
 
 		return resultObject;
 	}
 
+	@Transactional
 	public Object saveObject(Object dataMap) {
 		Map<String, Object> paramMap = (Map<String, Object>) dataMap;
 		String uniqueSequence = (String) paramMap.get("MEMBER_SEQ");
 		String password = (String) paramMap.get("PASSWORD");
 		
-		if("".equals(uniqueSequence)){
+		if(uniqueSequence == null || "".equals(uniqueSequence)){
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
 		paramMap.put("MEMBER_SEQ", uniqueSequence);

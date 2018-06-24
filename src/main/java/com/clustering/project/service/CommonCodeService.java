@@ -39,7 +39,7 @@ public class CommonCodeService {
 	public Object saveObject(Map<String, Object> dataMap) {
 		String uniqueSequence = (String) dataMap.get("COMMONCODE_ID");
 		
-		if("".equals(uniqueSequence)){
+		if(uniqueSequence == null || "".equals(uniqueSequence)){
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
 		dataMap.put("COMMONCODE_ID", uniqueSequence);

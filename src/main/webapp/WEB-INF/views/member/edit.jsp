@@ -64,7 +64,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="" role="form" method="POST" action="<c:url value='/member/merge' />" enctype="multipart/form-data">
+                                    <form id="" role="form" method="POST" action="<c:url value='/member/merge' />" >
 	                                    <input type="hidden" name="forwardView" value="/member/read" />
 	                                    <input type="hidden" name="MEMBER_SEQ" value="${resultMap.MEMBER_SEQ }" />
                                         <div class="form-group">

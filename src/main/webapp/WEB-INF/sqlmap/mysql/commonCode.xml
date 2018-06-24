@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="commonCode">
+	<select id="list" resultType="Map" parameterType="Map">
+		select 
+			COMMON_CODE_ID <!-- 공통 코드_ID -->
+			, NAME <!-- 명칭 -->
+			, ORDER_NUMBER <!-- 순서 -->
+			, ATTRIBUTION_1 <!-- 속성_1 -->
+			, ATTRIBUTION_2 <!-- 속성_2 -->
+			, DESCRIPTION <!-- 코드설명 -->
+			, SYSTEM_CODE_YN <!-- 초기 시스템 코드 여부 -->
+			, USE_YN <!-- 사용 여부 -->
+			, PARENT_COMMON_CODE_ID <!-- 상위 공통 코드 ID -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		from CIP_COMMON_CODE
+		<where>
+			<choose>
+			    <when test="PARENT_COMMON_CODE_ID != null and PARENT_COMMON_CODE_ID != ''">
+			        and PARENT_COMMON_CODE_ID = #{PARENT_COMMON_CODE_ID}
+			    </when>
+			    <otherwise>
+			        and PARENT_COMMON_CODE_ID is null
+			    </otherwise>
+			</choose>
+		    <if test="COMMON_CODE_ID != null">
+		        and COMMON_CODE_ID = #{COMMON_CODE_ID}
+		    </if>
+		</where>
+	</select>
+
+	<select id="read" resultType="Map" parameterType="Map">
+		select 
+			COMMON_CODE_ID <!-- 공통 코드_ID -->
+			, NAME <!-- 명칭 -->
+			, ORDER_NUMBER <!-- 순서 -->
+			, ATTRIBUTION_1 <!-- 속성_1 -->
+			, ATTRIBUTION_2 <!-- 속성_2 -->
+			, DESCRIPTION <!-- 코드설명 -->
+			, SYSTEM_CODE_YN <!-- 초기 시스템 코드 여부 -->
+			, USE_YN <!-- 사용 여부 -->
+			, PARENT_COMMON_CODE_ID <!-- 상위 공통 코드 ID -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		from CIP_COMMON_CODE
+		where COMMON_CODE_ID = #{COMMON_CODE_ID}
+	</select>
+
+	<insert id="merge" parameterType="Map">
+	    INSERT INTO CIP_COMMON_CODE(
+			COMMON_CODE_ID <!-- 공통 코드_ID -->
+			, NAME <!-- 명칭 -->
+			, ORDER_NUMBER <!-- 순서 -->
+			, ATTRIBUTION_1 <!-- 속성_1 -->
+			, ATTRIBUTION_2 <!-- 속성_2 -->
+			, DESCRIPTION <!-- 코드설명 -->
+			, SYSTEM_CODE_YN <!-- 초기 시스템 코드 여부 -->
+			, USE_YN <!-- 사용 여부 -->
+			, PARENT_COMMON_CODE_ID <!-- 상위 공통 코드 ID -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		)
+		values(
+			#{COMMON_CODE_ID} <!-- 공통 코드_ID -->
+			, #{NAME} <!-- 명칭 -->
+			, #{ORDER_NUMBER} <!-- 순서 -->
+			, #{ATTRIBUTION_1} <!-- 속성_1 -->
+			, #{ATTRIBUTION_2} <!-- 속성_2 -->
+			, #{DESCRIPTION} <!-- 코드설명 -->
+			, #{SYSTEM_CODE_YN} <!-- 초기 시스템 코드 여부 -->
+			, #{USE_YN} <!-- 사용 여부 -->
+			, #{PARENT_COMMON_CODE_ID} <!-- 상위 공통 코드 ID -->
+			, #{REGISTER_SEQ} <!-- 등록자SEQ -->
+			, sysdate() <!-- 등록일자 -->
+			, #{REGISTER_SEQ} <!-- 수정자_SEQ -->
+			, sysdate() <!-- 수정일자 -->
+		)
+		ON DUPLICATE KEY UPDATE 
+		NAME = #{NAME} <!-- 명칭 -->
+		, ORDER_NUMBER = #{ORDER_NUMBER} <!-- 순서 -->
+		, ATTRIBUTION_1 = #{ATTRIBUTION_1} <!-- 속성_1 -->
+		, ATTRIBUTION_2 = #{ATTRIBUTION_2} <!-- 속성_2 -->
+		, DESCRIPTION = #{DESCRIPTION} <!-- 코드설명 -->
+		, SYSTEM_CODE_YN = #{SYSTEM_CODE_YN} <!-- 초기 시스템 코드 여부 -->
+		, USE_YN = #{USE_YN} <!-- 사용 여부 -->
+		, PARENT_COMMON_CODE_ID = #{PARENT_COMMON_CODE_ID} <!-- 상위 공통 코드 ID -->
+		, MODIFIER_SEQ = #{MODIFIER_SEQ} <!-- 수정자_SEQ -->
+		, MODIFY_DATE = sysdate() <!-- 수정일자 -->
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from CIP_COMMON_CODE
+		<where>
+		COMMON_CODE_ID in (select COMMON_CODE_ID from CIP_COMMON_CODE
+							start with COMMON_CODE_ID in 
+									<foreach collection="COMMON_CODE_ID" item="item" index="index"
+										separator="," open="(" close=")">
+										'${COMMON_CODE_ID[index]}'
+									</foreach>
+							connect by prior COMMON_CODE_ID = PARENT_COMMON_CODE_ID)
+		</where>	
+	</delete>
+</mapper>

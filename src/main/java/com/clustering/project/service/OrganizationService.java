@@ -37,7 +37,7 @@ public class OrganizationService{
 	public Object saveObject(Map<String, Object> dataMap) {
 		String uniqueSequence = (String) dataMap.get("ORGANIZATION_SEQ");
 		
-		if("".equals(uniqueSequence)){
+		if(uniqueSequence == null || "".equals(uniqueSequence)){
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
 		dataMap.put("ORGANIZATION_SEQ", uniqueSequence);
