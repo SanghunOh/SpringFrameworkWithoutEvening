@@ -132,56 +132,59 @@ public class FileUtil {
 
 			multiFile = multipartRequest.getFile(fileName);
 
-			// limit file size
-			if (multiFile.getSize() > attachFileSize) {
-				return WebArgumentResolver.UNRESOLVED;
-			}
-
-			// original filename (ex. neopets.jpg)
-			String originalFileName = multiFile.getOriginalFilename().trim();
-
-			if (originalFileName == "" || originalFileName.isEmpty()) {
-				return WebArgumentResolver.UNRESOLVED;
-			}
-
-			// convert original filename with FileUtil.java to virtual
-			// filename to upload in ftp
-			String multiFileName = null;
-
-			multiFileName = FileUtil.getNewFileName(originalFileName);
-
-			// file 저장경로 + fileName
-			String attachFileName = filePath + multiFileName;
-
-			// file size (ex. 1KByte -> 1048)
-			String fileSize = multiFile.getSize() + "";
-
-			// get ContentType (ex. jpg(original file type) -> images/JPEG
-			// ...)
-			String fileContentType = multiFile.getContentType();
-
-			try {
-				// file 저장위치에 이동
-				String uniqueSequence = commonUtil.getUniqueSequence();
-
-				multiFile.transferTo(new File(attachFileName));
-				fileMap.put("ATTACHFILE_SEQ", uniqueSequence);
-				fileMap.put("ORGINALFILE_NAME", originalFileName);
-				fileMap.put("PHYSICALFILE_NAME", multiFileName);
-				fileMap.put("ATTACHFILE_TYPE", fileContentType);
-				fileMap.put("ATTACHFILE_SIZE", fileSize);
-				fileMap.put("ATTACHFILE_PATH", filePathSub);
-				fileMap.put("THUMBNAIL_NAME", "");
-				fileMap.put("ATTACHFILE_HEIGHT", 0);
-				fileMap.put("ATTACHFILE_WIDTH", 0);
-
-				fileList.add(fileMap);
-
-			} catch (Exception e) {
-				File file = new File(attachFileName);
-				file.delete();
-				e.printStackTrace();
-			} finally {
+			int compareSize = (int) multiFile.getSize();
+			if(compareSize > 0) {
+				// limit file size
+				if (multiFile.getSize() > attachFileSize) {
+	//				return WebArgumentResolver.UNRESOLVED;
+				}
+	
+				// original filename (ex. neopets.jpg)
+				String originalFileName = multiFile.getOriginalFilename().trim();
+	
+				if (originalFileName == "" || originalFileName.isEmpty()) {
+	//				return WebArgumentResolver.UNRESOLVED;
+				}
+	
+				// convert original filename with FileUtil.java to virtual
+				// filename to upload in ftp
+				String multiFileName = null;
+	
+				multiFileName = FileUtil.getNewFileName(originalFileName);
+	
+				// file 저장경로 + fileName
+				String attachFileName = filePath + multiFileName;
+	
+				// file size (ex. 1KByte -> 1048)
+				String fileSize = multiFile.getSize() + "";
+	
+				// get ContentType (ex. jpg(original file type) -> images/JPEG
+				// ...)
+				String fileContentType = multiFile.getContentType();
+	
+				try {
+					// file 저장위치에 이동
+					String uniqueSequence = commonUtil.getUniqueSequence();
+	
+					multiFile.transferTo(new File(attachFileName));
+					fileMap.put("ATTACHFILE_SEQ", uniqueSequence);
+					fileMap.put("ORGINALFILE_NAME", originalFileName);
+					fileMap.put("PHYSICALFILE_NAME", multiFileName);
+					fileMap.put("ATTACHFILE_TYPE", fileContentType);
+					fileMap.put("ATTACHFILE_SIZE", fileSize);
+					fileMap.put("ATTACHFILE_PATH", filePathSub);
+					fileMap.put("THUMBNAIL_NAME", "");
+					fileMap.put("ATTACHFILE_HEIGHT", 0);
+					fileMap.put("ATTACHFILE_WIDTH", 0);
+	
+					fileList.add(fileMap);
+	
+				} catch (Exception e) {
+					File file = new File(attachFileName);
+					file.delete();
+					e.printStackTrace();
+				} finally {
+				}
 			}
 		}
 		return fileList;
