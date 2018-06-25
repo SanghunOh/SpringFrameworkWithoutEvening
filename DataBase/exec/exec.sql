@@ -10,4 +10,4 @@ where COMMON_CODE_ID in (select COMMON_CODE_ID from CIP_COMMON_CODE
 INSERT into (    AUTHORITY_ID      , MEMBER_SEQ     , REGISTER_SEQ     , REGISTRY_DATE     , MODIFIER_SEQ     , MODIFY_DATE    )   
 values        
 (    ?      , ?     , ?     , sysdate     , ?     , sysdate    )    ,    
-(    ?      , ?     , ?     , sysdate     , ?     , sysdate    )						
+(    ?      , ?     , ?     , sysdate     , ?     , sysdate    )
