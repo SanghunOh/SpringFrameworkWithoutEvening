@@ -3,12 +3,12 @@ from CIP_COMMON_CODE;
 
 insert into CIP_COMMON_CODE 
 (COMMON_CODE_ID,NAME,ORDER_NUMBER,ATTRIBUTION_1,ATTRIBUTION_2,DESCRIPTION,SYSTEM_CODE_YN,USE_YN,PARENT_COMMON_CODE_ID,REGISTER_SEQ,REGISTRY_DATE,MODIFIER_SEQ,MODIFY_DATE) 
-select 'Use_YN','Yes or No',1,'','','Using Yes or No','System_Code_Yes','Yes','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
-select 'Yes','Yes',1,'','','Using Yes','System_Code_Yes','Yes','Use_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
-select 'No','No',2,'','','Using No','System_Code_Yes','Yes','Use_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
-select 'System_Code_YN','Sytem Yes or No',1,'','','Sytem Using Yes or No','System_Code_Yes','Yes','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
-select 'System_Code_Yes','Yes',1,'','','Sytem Using Yes','System_Code_Yes','Yes','System_Code_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
-select 'System_Code_No','No',2,'','','Sytem Using No','System_Code_Yes','Yes','System_Code_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual ; 
+select 'Use_YN','Yes or No',1,NULL,NULL,'Using Yes or No','System_Code_Yes','Yes',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
+select 'Yes','Yes',1,NULL,NULL,'Using Yes','System_Code_Yes','Yes','Use_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
+select 'No','No',2,NULL,NULL,'Using No','System_Code_Yes','Yes','Use_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
+select 'System_Code_YN','Sytem Yes or No',1,NULL,NULL,'Sytem Using Yes or No','System_Code_Yes','Yes',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
+select 'System_Code_Yes','Yes',1,NULL,NULL,'Sytem Using Yes','System_Code_Yes','Yes','System_Code_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all 
+select 'System_Code_No','No',2,NULL,NULL,'Sytem Using No','System_Code_Yes','Yes','System_Code_YN','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual ; 
 
 DELETE FROM CIP_MENU_AUTHORITY;
 DELETE FROM CIP_MENU;
@@ -16,14 +16,14 @@ DELETE FROM CIP_MENU;
 -- 메뉴
 insert into CIP_MENU 
 (MENU_SEQ,NAME,ORDER_NUMBER,MENU_URI,USE_YN,PARENT_MENU_SEQ,REGISTER_SEQ,REGISTRY_DATE,MODIFIER_SEQ,MODIFY_DATE) 
-select 'UUID-000001','HOME',1,'/','Y','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
-select 'UUID-000002','ORGANIZATION',1,'/organization/list','Y','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
+select 'UUID-000001','HOME',1,'/','Y',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
+select 'UUID-000002','ORGANIZATION',1,'/organization/list','Y',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000021','LIST',1,'/organization/list','Y','UUID-000002','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000022','EDIT',2,'/organization/edit','Y','UUID-000002','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
-select 'UUID-000003','COMMON CODE',2,'/commonCode/list','Y','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
+select 'UUID-000003','COMMON CODE',2,'/commonCode/list','Y',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000031','LIST',1,'/commonCode/list','Y','UUID-000003','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000032','EDIT',2,'/commonCode/edit','Y','UUID-000003','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
-select 'UUID-000004','MEMBER',3,'/member/list','Y','','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
+select 'UUID-000004','MEMBER',3,'/member/list','Y',NULL,'UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000041','LIST',1,'/member/list','Y','UUID-000004','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual union all
 select 'UUID-0000042','EDIT',2,'/member/edit','Y','UUID-000004','UUID-1111-1111111',sysdate,'UUID-1111-1111111',sysdate from dual ;
 
