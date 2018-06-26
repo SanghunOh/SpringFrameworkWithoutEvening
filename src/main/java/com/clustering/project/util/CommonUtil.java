@@ -69,8 +69,8 @@ public class CommonUtil {
 //		String fullPath = URLDecoder.decode(path, "UTF-8");
 		String pathArr[] = fullPath.split("/WEB-INF/classes/");
 		
-//    	String physicalDirectory = "C:\\sts-bundle\\Downloads\\";
-    	String physicalDirectory = pathArr[0] + "";
+    	String physicalDirectory = "C:\\Users\\student\\git\\Lecture_SpringFramework\\src\\main\\webapp\\resources\\uploads\\";
+//    	String physicalDirectory = pathArr[0] + "";
 		return physicalDirectory;
     }
 }

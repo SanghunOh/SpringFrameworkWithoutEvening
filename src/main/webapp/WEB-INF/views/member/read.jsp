@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Form Elements
+                            Form Elements <img src="<c:url value='/resources/uploads/cat.jpg' />" alt="" height="25" width="25">
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -46,7 +46,7 @@
                                             <label>Image File input</label>
 											<p class="form-control-static">
 												<c:forEach items="${resultMap.attachFileList}" var="resultData" varStatus="loop">
-													${resultData.ORGINALFILE_NAME}
+													<img src="<c:url value='/resources/uploads/${resultData.PHYSICALFILE_NAME}' />" alt="" height="25" width="25">
 												</c:forEach>
 											</p>
 	                                    </div>
