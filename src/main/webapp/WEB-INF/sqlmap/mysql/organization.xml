@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="organization">
+	<select id="list" resultType="Map" parameterType="Map" timeout="10">
+		select 
+			ORGANIZATION_SEQ	<!-- 조직 일련번호 -->
+			, NAME	<!-- 명칭 -->
+			, TELEPHONE	<!-- 대표 전화번호 -->
+			, ORDER_NUMBER	<!-- 정렬순서 -->
+			, PARENT_ORGANIZATION_SEQ	<!-- 상위 조직 일련번호 -->
+		from CIP_ORGANIZATION
+		<where>
+			<choose>
+			    <when test="PARENT_ORGANIZATION_SEQ != null and PARENT_ORGANIZATION_SEQ != ''">
+			        and PARENT_ORGANIZATION_SEQ = #{PARENT_ORGANIZATION_SEQ}
+			    </when>
+			    <otherwise>
+			        and PARENT_ORGANIZATION_SEQ is null
+			    </otherwise>
+			</choose>
+		    <if test="COMMON_CODE_ID != null">
+		        and COMMON_CODE_ID = #{COMMON_CODE_ID}
+		    </if>
+		</where>
+	</select>
+
+	<select id="read" resultType="Map" parameterType="Map">
+		select 
+			ORGANIZATION_SEQ	<!-- 조직 일련번호 -->
+			, NAME	<!-- 명칭 -->
+			, TELEPHONE	<!-- 대표 전화번호 -->
+			, ORDER_NUMBER	<!-- 정렬순서 -->
+			, PARENT_ORGANIZATION_SEQ	<!-- 상위 조직 일련번호 -->
+		from CIP_ORGANIZATION
+		where ORGANIZATION_SEQ = #{ORGANIZATION_SEQ}
+	</select>
+
+	<insert id="merge" parameterType="Map">
+	    INSERT INTO CIP_ORGANIZATION (
+			ORGANIZATION_SEQ	<!-- 조직 일련번호 -->
+			, NAME	<!-- 명칭 -->
+			, TELEPHONE	<!-- 대표 전화번호 -->
+			, ORDER_NUMBER	<!-- 정렬순서 -->
+			, PARENT_ORGANIZATION_SEQ	<!-- 상위 조직 일련번호 -->
+		)
+		values(
+			#{ORGANIZATION_SEQ}	<!-- 조직 일련번호 -->
+			, #{NAME}	<!-- 명칭 -->
+			, #{TELEPHONE}	<!-- 대표 전화번호 -->
+			, #{ORDER_NUMBER}	<!-- 정렬순서 -->
+			, #{PARENT_ORGANIZATION_SEQ}	<!-- 상위 조직 일련번호 -->
+		)
+		ON DUPLICATE KEY UPDATE 
+			NAME = #{NAME} 	<!-- 명칭 -->
+			, TELEPHONE = #{TELEPHONE} 	<!-- 대표 전화번호 -->
+			, ORDER_NUMBER = #{ORDER_NUMBER} 	<!-- 정렬순서 -->
+			, PARENT_ORGANIZATION_SEQ = #{PARENT_ORGANIZATION_SEQ} 	<!-- 상위 조직 일련번호 -->
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from CIP_ORGANIZATION
+		where ORGANIZATION_SEQ = #{ORGANIZATION_SEQ}
+	</delete>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="authorityRmember">
+	<select id="list" resultType="Map" parameterType="Map">
+		select 
+			AUTHORITY_MEMBER.AUTHORITY_ID <!-- 권한 코드 --> 
+			, MEMBER_SEQ <!-- 회원_SEQ -->
+			, AUTHORITY_MEMBER.REGISTER_SEQ <!-- 등록자SEQ -->
+			, AUTHORITY_MEMBER.REGISTRY_DATE <!-- 등록일자 -->
+			, AUTHORITY_MEMBER.MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, AUTHORITY_MEMBER.MODIFY_DATE <!-- 수정일자 -->
+			, AUTHORITY.NAME AUTHORITY_NAME <!-- 명칭 -->
+		from CIP_AUTHORITY_MEMBER AUTHORITY_MEMBER
+			, CIP_AUTHORITY AUTHORITY
+		<where>
+		    and AUTHORITY_MEMBER.AUTHORITY_ID = AUTHORITY.AUTHORITY_ID
+		    <choose>
+		        <when test="MEMBER_SEQ != null">
+					and MEMBER_SEQ = #{MEMBER_SEQ}
+		        </when>
+		    </choose>
+		</where>
+	</select>
+	
+	<select id="read" resultType="Map" parameterType="Map">
+	</select>
+
+	<insert id="merge" parameterType="Map">
+	</insert>
+
+	<insert id="insert" parameterType="Map">
+	    INSERT INTO CIP_AUTHORITY_MEMBER (
+			AUTHORITY_ID <!-- 권한 코드 --> 
+			, MEMBER_SEQ <!-- 회원_SEQ -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		)
+		values
+		(
+			#{AUTHORITY_ID} <!-- 권한 코드 --> 
+			, #{MEMBER_SEQ} <!-- 회원_SEQ -->
+			, #{REGISTER_SEQ} <!-- 등록자SEQ -->
+			, sysdate() <!-- 등록일자 -->
+			, #{REGISTER_SEQ} <!-- 수정자_SEQ -->
+			, sysdate() <!-- 수정일자 -->
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="Map">
+		delete from CIP_AUTHORITY_MEMBER
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</delete>	
+</mapper>
