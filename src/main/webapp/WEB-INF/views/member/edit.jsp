@@ -66,7 +66,7 @@
                                 <div class="col-lg-12">
                                     <form id="" role="form" method="POST" action="<c:url value='/member/merge' />" enctype="multipart/form-data">
 	                                    <input type="hidden" name="forwardView" value="/member/read" />
-	                                    <input type="checkbox" name="AUTHORITY_ID" value="ROLE_GUEST">
+	                                    <input type="hidden" name="AUTHORITY_ID" value="ROLE_GUEST">
 	                                    <input type="hidden" name="MEMBER_SEQ" value="${resultMap.MEMBER_SEQ }" />
                                         <div class="form-group">
                                             <label>MEMBER_ID Text Input </label>

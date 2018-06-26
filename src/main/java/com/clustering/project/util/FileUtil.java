@@ -112,12 +112,7 @@ public class FileUtil {
 		int attachFileSize = 500000;
 		String filePath = "";
 
-		String filePathRoot = "C:\\sts-bundle\\Downloads\\";
-//		System.getProperty( "catalina.base" ) C:\sts-bundle\pivotal-tc-server-developer-3.2.9.RELEASE\base-instance
-/*		this.getClass().getClassLoader().getResource("").getPath();
-		String fullPath = URLDecoder.decode(path, "UTF-8");
-		String pathArr[] = fullPath.split("/WEB-INF/classes/");
-*/		
+		String filePathRoot = commonUtil.workingPhysicalDirectory();
 		String filePathSub = "";
 		filePath = filePathRoot + filePathSub;
 
