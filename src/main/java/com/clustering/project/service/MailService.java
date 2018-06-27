@@ -1,4 +1,4 @@
-package com.clustering.project.component;
+package com.clustering.project.service;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MailComponent {
+public class MailService {
 	
 	@Autowired
 	private JavaMailSender mailSender;
