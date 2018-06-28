@@ -1,5 +1,6 @@
 package com.clustering.project.security;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,10 +11,10 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
 import com.clustering.project.dao.ShareDao;
 
@@ -24,7 +25,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 	private ShareDao dao;
 
 	@Override
-	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
+	public MemberInfo loadUserByUsername(final String username) throws UsernameNotFoundException {
 
 		Map<String, Object> dataMap = new HashMap<String, Object>(); 
 		
@@ -44,11 +45,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
 
-		return buildUserForAuthentication(resultMember, buildUserAuthority(resultAuthorities));
-	}
-
-	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, Set<GrantedAuthority> authorities) {
-		return new MemberInfo(resultMember, authorities);
+		return new MemberInfo(resultMember, buildUserAuthority(resultAuthorities));
 	}
 
 	private Set<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
