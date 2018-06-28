@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.clustering.project.dao.ShareDao;
 
-@Service
-public class CustomizeUserDetailsService implements UserDetailsService {
+//@Service
+public class CustomizeWithoutPrincipalUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private ShareDao dao;
@@ -40,6 +40,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User details not found with this username: " + username);
         }
         
+
 		dataMap = (Map<String, Object>) dao.getObject(sqlMapId, dataMap);
 
 		sqlMapId = "authorityRmember.list";
@@ -48,24 +49,28 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 		dataMap.put("MEMBER_SEQ", dataMap.get("MEMBER_SEQ"));
 		
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
+		List<GrantedAuthority> authorities = buildUserAuthority(resultAuthorities);
 
-		return buildUserForAuthentication(resultMember, buildUserAuthority(resultAuthorities));
+		return buildUserForAuthentication(resultMember, authorities);
 	}
 
-	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, Set<GrantedAuthority> authorities) {
-		return new MemberInfo(resultMember, authorities);
+	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, List<GrantedAuthority> authorities) {
+		return new MemberInfo(resultMember.get("MEMBER_SEQ"), resultMember.get("MEMBER_ID"), resultMember.get("EMAIL"), 
+				resultMember.get("NAME"), resultMember.get("PASSWORD"), authorities);
 	}
 
-	private Set<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
+	private List<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
 
-		Set<GrantedAuthority> resultObject = new HashSet<GrantedAuthority>();
+		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
 		 Iterator iterator = resultAuthorities.iterator();
 	     while(iterator.hasNext()) {
 	    	Map<String,String> element = (Map<String, String>) iterator.next();
-	    	resultObject.add(new SimpleGrantedAuthority(element.get("AUTHORITY_ID")));
+			setAuths.add(new SimpleGrantedAuthority(element.get("AUTHORITY_ID")));
 	     }
 		
-		return resultObject;
+		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
+
+		return Result;
 	}
 }

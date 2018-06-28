@@ -13,20 +13,14 @@ import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
 import java.util.function.ToLongFunction;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.Assert;
-
-import com.clustering.project.util.CommonUtil;
 
 public class MemberInfo implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
-	@Autowired
-	CommonUtil commonUtil;
-	
 	private String memberSeq; // Member Seq
 	private String memberID; // Member ID
 	private String email; // Member Email
@@ -34,7 +28,7 @@ public class MemberInfo implements UserDetails {
 	private String password; // Password
 	private Set<GrantedAuthority> authorities; // Roles by Member
 
-	public MemberInfo(Map<String, Object> resultMember, Set<GrantedAuthority> authorities) {
+	public MemberInfo(Map<String, String> resultMember, Set<GrantedAuthority> authorities) {
 		this.memberSeq = (String) resultMember.get("MEMBER_SEQ");
 		this.memberID = (String) resultMember.get("MEMBER_ID");
 		this.email = (String) resultMember.get("EMAIL");
