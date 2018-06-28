@@ -1,6 +1,5 @@
 package com.clustering.project.security;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,25 +8,24 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.clustering.project.dao.ShareDao;
 
 //@Service
-public class CustomizeWithoutPrincipalUserDetailsService implements UserDetailsService {
+public class CustomizeUserDetailsServiceSimple implements UserDetailsService {
 
 	@Autowired
 	private ShareDao dao;
 
-//	@Transactional(readOnly=true)
 	@Override
-	public MemberInfo loadUserByUsername(final String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
 		Map<String, Object> dataMap = new HashMap<String, Object>(); 
 		
@@ -40,37 +38,25 @@ public class CustomizeWithoutPrincipalUserDetailsService implements UserDetailsS
             throw new UsernameNotFoundException("User details not found with this username: " + username);
         }
         
-
 		dataMap = (Map<String, Object>) dao.getObject(sqlMapId, dataMap);
 
 		sqlMapId = "authorityRmember.list";
 		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
-
-		dataMap.put("MEMBER_SEQ", dataMap.get("MEMBER_SEQ"));
 		
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
-		List<GrantedAuthority> authorities = buildUserAuthority(resultAuthorities);
 
-		return buildUserForAuthentication(resultMember, authorities);
+		return new User(username, (String) resultMember.get("PASSWORD"), buildUserAuthority(resultAuthorities));
 	}
-
-	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, List<GrantedAuthority> authorities) {
-		return new MemberInfo(resultMember.get("MEMBER_SEQ"), resultMember.get("MEMBER_ID"), resultMember.get("EMAIL"), 
-				resultMember.get("NAME"), resultMember.get("PASSWORD"), authorities);
-	}
-
-	private List<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
-
-		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+	private Set<GrantedAuthority> buildUserAuthority(List<Object> resultAuthorities) {
+		Set<GrantedAuthority> resultObject = new HashSet<GrantedAuthority>();
 
 		 Iterator iterator = resultAuthorities.iterator();
 	     while(iterator.hasNext()) {
 	    	Map<String,String> element = (Map<String, String>) iterator.next();
-			setAuths.add(new SimpleGrantedAuthority(element.get("AUTHORITY_ID")));
+	    	resultObject.add(new SimpleGrantedAuthority(element.get("AUTHORITY_ID")));
 	     }
 		
-		List<GrantedAuthority> Result = new ArrayList<GrantedAuthority>(setAuths);
-
-		return Result;
+		return resultObject;
 	}
+
 }

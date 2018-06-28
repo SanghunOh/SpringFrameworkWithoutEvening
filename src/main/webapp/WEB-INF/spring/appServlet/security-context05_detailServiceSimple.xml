@@ -12,7 +12,7 @@
     <!-- <global-method-security pre-post-annotations="enabled"/> -->
 
 	<context:component-scan base-package="com.clustering.project" />
-	<beans:bean id="customizeUserDetailsService" class="com.clustering.project.security.CustomizeWithoutPrincipalUserDetailsService"/>
+	<beans:bean id="customizeUserDetailsService" class="com.clustering.project.security.CustomizeUserDetailsServiceSimple"/>
 	
    	<http security="none" pattern="/resources/**" />
 	<http security="none" pattern="/ws/**" />
