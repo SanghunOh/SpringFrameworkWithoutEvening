@@ -49,7 +49,7 @@ public class CustomizeSecurityDaoImpl extends JdbcDaoImpl {
 
 		List<GrantedAuthority> dbAuths = new ArrayList<GrantedAuthority>(
 				dbAuthsSet);
-		user.setAuthorities(dbAuths);
+		user.setAuthorities((Set<GrantedAuthority>) dbAuths);
 
 		if (dbAuths.size() == 0) {
 			logger.debug("User '" + username

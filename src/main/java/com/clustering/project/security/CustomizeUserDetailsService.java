@@ -1,6 +1,6 @@
 package com.clustering.project.security;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.clustering.project.dao.ShareDao;
 
@@ -27,7 +27,7 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 
 //	@Transactional(readOnly=true)
 	@Override
-	public MemberInfo loadUserByUsername(final String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 
 		Map<String, Object> dataMap = new HashMap<String, Object>(); 
 		
@@ -45,11 +45,10 @@ public class CustomizeUserDetailsService implements UserDetailsService {
 		sqlMapId = "authorityRmember.list";
 		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
 
-		dataMap.put("MEMBER_SEQ", dataMap.get("MEMBER_SEQ"));
-		
 		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
 
-		return buildUserForAuthentication(resultMember, buildUserAuthority(resultAuthorities));
+		return new User(username, (String) resultMember.get("PASSWORD"), (Collection<? extends GrantedAuthority>) resultAuthorities);
+//		return buildUserForAuthentication(resultMember, buildUserAuthority(resultAuthorities));
 	}
 
 	private MemberInfo buildUserForAuthentication(Map<String, String> resultMember, Set<GrantedAuthority> authorities) {
