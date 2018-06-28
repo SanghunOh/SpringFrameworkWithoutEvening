@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -37,6 +38,9 @@
                                         <div class="form-group">
                                             <label>DESCRIPTION Text area</label>
                                             <textarea class="form-control" rows="3" name="DESCRIPTION" placeholder="Describe yourself here...">${resultMap.DESCRIPTION }</textarea>
+											 <script>
+											     CKEDITOR.replace( 'DESCRIPTION' );
+											 </script>
                                         </div>
                                         <div class="form-group">
 										    <label for="disabledSelect">PARENT_COMMON_CODE_ID Disabled input </label>
