@@ -57,7 +57,7 @@ public class MemberService {
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
 		paramMap.put("MEMBER_SEQ", uniqueSequence);
-//		paramMap.put("CRYPT_PASSWORD", commonUtil.PasswordEncoderGenerator(password));
+		paramMap.put("CRYPT_PASSWORD", commonUtil.PasswordEncoderGenerator(password));
 		paramMap.put("REGISTER_SEQ", "UUID-1111-1111111");
 		paramMap.put("MODIFIER_SEQ", "UUID-1111-1111111");
 		

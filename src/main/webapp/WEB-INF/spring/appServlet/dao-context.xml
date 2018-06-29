@@ -45,13 +45,14 @@
 	<aop:config>
 		<aop:pointcut id="allServices"
 			expression="execution(* com.clustering.project.service.*.save*(..)) 
-			|| execution(* com.clustering.project.service.*.delete*(..))" />
+			|| execution(* com.clustering.project.service.Service*.delete*(..))" />
 		<aop:advisor pointcut-ref="allServices" advice-ref="txAdvice" />
 	</aop:config>
 	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="save*" />
+			<!-- <tx:method name="insert*" /> -->
 			<tx:method name="delete*" />
 			<tx:method name="get*" read-only="true" />
 			<!-- tx:method name="*" / -->
