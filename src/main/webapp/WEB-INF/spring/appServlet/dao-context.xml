@@ -44,8 +44,8 @@
 
 	<aop:config>
 		<aop:pointcut id="allServices"
-			expression="execution(* 
-		com.clustering.project.service.*.save*(..))" />
+			expression="execution(* com.clustering.project.service.*.save*(..)) 
+			|| execution(* com.clustering.project.service.*.delete*(..))" />
 		<aop:advisor pointcut-ref="allServices" advice-ref="txAdvice" />
 	</aop:config>
 	

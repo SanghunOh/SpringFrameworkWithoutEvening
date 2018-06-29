@@ -47,7 +47,7 @@ public class MemberService {
 		return resultObject;
 	}
 
-	@Transactional
+//	@Transactional
 	public Object saveObject(Object dataMap) {
 		Map<String, Object> paramMap = (Map<String, Object>) dataMap;
 		String uniqueSequence = (String) paramMap.get("MEMBER_SEQ");

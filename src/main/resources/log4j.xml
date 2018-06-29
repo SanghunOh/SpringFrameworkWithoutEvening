@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.clustering.project">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -33,13 +33,13 @@
 	</logger>
 
 	<logger name="org.mybatis.spring.SqlSessionTemplate">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	
 		<!-- Root Logger -->
 	<root>
 		<!-- priority value="TRACE" / -->	    
-		<priority value="TRACE" />	    
+		<priority value="info" />	    
 		<appender-ref ref="console" />
 	</root>
 	
