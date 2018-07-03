@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class LoggingAspect {
 	private Logger logger = Logger.getLogger(getClass());
 	
-	@Before(value="execution(* com.clustering.project.service.*Service.*(..))")
+	@Before(value="execution(* com.clustering.project.controller.*Controller.*(..))")
 	public void log(JoinPoint joinPoint){
 		logger.info("Entering " 
 				+ joinPoint.getTarget().getClass().getSimpleName() +"'s"+ joinPoint.getSignature().getName());
