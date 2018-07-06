@@ -23,6 +23,7 @@
 			<list>
 				<value>classpath:jdbc.properties</value>
 				<value>classpath:mail.properties</value>
+				<value>classpath:file.properties</value>
 			</list>
 		</property>
 	</bean>

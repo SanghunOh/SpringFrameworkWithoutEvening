@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebArgumentResolver;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +25,9 @@ public class FileUtil {
 	@Autowired
 	private CommonUtil commonUtil;
 	
+//    @Value("#{commonProperty['file.directory']}")
+    private String fileDirectory = "C:\\Users\\student\\git\\Lecture_SpringFramework\\src\\main\\webapp\\resources\\uploads";
+
     /**
      * 생성자
      */
