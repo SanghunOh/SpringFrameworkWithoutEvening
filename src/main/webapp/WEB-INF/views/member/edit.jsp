@@ -59,7 +59,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Form Elements
+                            Form Elements <img src="<c:url value='/resources/uploads/cat.jpg' />" alt="" height="25" width="25">
                         </div>
                         <div class="panel-body">
                             <div class="row">
