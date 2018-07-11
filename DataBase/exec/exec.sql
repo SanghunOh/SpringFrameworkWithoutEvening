@@ -11,3 +11,8 @@ INSERT into (    AUTHORITY_ID      , MEMBER_SEQ     , REGISTER_SEQ     , REGISTR
 values        
 (    ?      , ?     , ?     , sysdate     , ?     , sysdate    )    ,    
 (    ?      , ?     , ?     , sysdate     , ?     , sysdate    )
+
+delete from CIP_AUTHORITY_MEMBER 
+WHERE MEMBER_SEQ in (select MEMBER_SEQ from CIP_MEMBER where MEMBER_ID = 'test02');
+
+delete from CIP_MEMBER WHERE MEMBER_ID = 'test02';

@@ -26,7 +26,7 @@ public class FileUtil {
 	private CommonUtil commonUtil;
 	
 //    @Value("#{commonProperty['file.directory']}")
-    private String fileDirectory = "C:\\Users\\student\\git\\Lecture_SpringFramework\\src\\main\\webapp\\resources\\uploads";
+//    private String fileDirectory = "C:\\Users\\student\\git\\Lecture_SpringFramework\\src\\main\\webapp\\resources\\uploads\\";
 
     /**
      * 생성자
@@ -116,7 +116,7 @@ public class FileUtil {
 		int attachFileSize = 500000;
 		String filePath = "";
 
-		String filePathRoot = commonUtil.workingPhysicalDirectory();
+		String filePathRoot = commonUtil.workingPhysicalDirectory(multipartRequest);
 		String filePathSub = "";
 		filePath = filePathRoot + filePathSub;
 
