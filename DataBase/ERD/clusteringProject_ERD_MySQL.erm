@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>996</x>
-	<y>345</y>
+	<x>708</x>
+	<y>0</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -26,7 +26,7 @@
 	<font_name>Arial</font_name>
 	<font_size>9</font_size>
 	<settings>
-		<database>Oracle</database>
+		<database>MySQL</database>
 		<capital>false</capital>
 		<table_style></table_style>
 		<notation></notation>
@@ -41,7 +41,7 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path>DataBase/TableSchema/clusteringProject_ERD.sql</output_path>
+				<output_path>DataBase/TableSchema/clusteringProject_ERD_MySQL.sql</output_path>
 				<encoding>UTF-8</encoding>
 				<line_feed>LF</line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-12-10 13:31:41</creation_date>
-			<updated_date>2018-06-22 10:52:30</updated_date>
+			<updated_date>2018-06-12 17:12:12</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -159,6 +159,10 @@
 		</model_properties>
 		<table_properties>
 			<schema></schema>
+			<character_set></character_set>
+			<collation></collation>
+			<storage_engine></storage_engine>
+			<primary_key_length_of_text>null</primary_key_length_of_text>
 		</table_properties>
 		<environment_setting>
 			<environment>
@@ -234,7 +238,7 @@
 		</word>
 		<word>
 			<id>4</id>
-			<length>200</length>
+			<length>40</length>
 			<decimal>null</decimal>
 			<array>false</array>
 			<array_dimension>null</array_dimension>
@@ -1097,6 +1101,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -1355,6 +1363,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -1712,6 +1724,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -1936,6 +1952,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -2092,6 +2112,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -2256,6 +2280,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -2412,6 +2440,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -2670,6 +2702,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 		<table>
@@ -3032,6 +3068,10 @@
 			</complex_unique_key_list>
 			<table_properties>
 				<schema></schema>
+				<character_set></character_set>
+				<collation></collation>
+				<storage_engine></storage_engine>
+				<primary_key_length_of_text>null</primary_key_length_of_text>
 			</table_properties>
 		</table>
 	</contents>
