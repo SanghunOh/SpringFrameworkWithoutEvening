@@ -21,7 +21,7 @@
                                     <input class="form-control" placeholder="member ID" name="email" type="text" value="system_admin" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="12345">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="system_admin">
                                 </div>
                                 <div class="checkbox">
                                     <label>

@@ -38,12 +38,9 @@ public class CustomizeUserDetailsServiceSimple implements UserDetailsService {
             throw new UsernameNotFoundException("User details not found with this username: " + username);
         }
         
-		dataMap = (Map<String, Object>) dao.getObject(sqlMapId, dataMap);
-
 		sqlMapId = "authorityRmember.list";
-		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
 		
-		List<Object> resultAuthorities = dao.getList(sqlMapId, dataMap);
+		List<Object> resultAuthorities = dao.getList(sqlMapId, resultMember);
 
 		return new User(username, (String) resultMember.get("PASSWORD"), buildUserAuthority(resultAuthorities));
 	}

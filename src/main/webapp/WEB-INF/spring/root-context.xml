@@ -11,6 +11,7 @@
 	<!-- <import resource="appServlet/security-context00_Base.xml" /> -->
 	<!-- <import resource="appServlet/security-context01_attribute.xml" /> -->
 	<!-- <import resource="appServlet/security-context02_baseDB.xml" /> -->
-	<import resource="appServlet/security-context05_detailServiceSimple.xml" />
-	<!-- <import resource="appServlet/security-context06_detailService.xml" /> -->
+	<!-- <import resource="appServlet/security-context05_detailServiceSimple.xml" /> -->
+	<import resource="appServlet/security-context06_detailServiceSimpleWithCrypt.xml" />
+	<!-- <import resource="appServlet/security-context07_detailService.xml" /> -->
 </beans>

@@ -67,9 +67,9 @@ public class MemberService {
 		authorityRmemberService.insertObject(paramMap);
 
 		// insert Attach Files By Member_seq
-		paramMap.put("SOURCE_UNIQUE_SEQ", uniqueSequence);
-		sqlMapId = "attachfile.insert";
-		dao.saveObject(sqlMapId, paramMap);
+//		paramMap.put("SOURCE_UNIQUE_SEQ", uniqueSequence);
+//		sqlMapId = "attachfile.insert";
+//		dao.saveObject(sqlMapId, paramMap);
 
 		// reading member information
 		Map resultObject = (Map) this.getObject(paramMap);
