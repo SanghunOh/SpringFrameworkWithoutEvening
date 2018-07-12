@@ -12,7 +12,7 @@
 	    <put-attribute name="layout.left"
 			value="/WEB-INF/views/template/user_left.jsp" />
 	    <put-attribute name="layout.top"
-			value="/WEB-INF/views/template/user_top_01.jsp" />
+			value="/WEB-INF/views/template/user_top_02.jsp" />
    	</definition>
 	
 	<!-- home, login, loginForm misc -->
@@ -29,7 +29,7 @@
 	    <put-attribute name="layout.left"
 			value="/WEB-INF/views/template/user_left.jsp" />
 	    <put-attribute name="layout.top"
-			value="/WEB-INF/views/template/user_top_01.jsp" />
+			value="/WEB-INF/views/template/user_top_02.jsp" />
    	</definition>
 	
 	<!-- any URI -->
