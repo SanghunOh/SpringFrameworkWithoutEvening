@@ -39,7 +39,6 @@ public class CustomizeUserDetailsService implements UserDetailsService {
         }
         
 		sqlMapId = "authorityRmember.list";
-		dataMap.put("MEMBER_SEQ", resultMember.get("MEMBER_SEQ"));
 
 		List<Object> resultAuthorities = dao.getList(sqlMapId, resultMember);
 
