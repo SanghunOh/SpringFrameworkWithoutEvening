@@ -15,7 +15,7 @@
     <link href="<c:url value='/resources/css/timeline.css' />" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<c:url value='/resources/css/morris.css' />" rel="stylesheet">
+    <%-- <link href="<c:url value='/resources/css/morris.css' />" rel="stylesheet"> --%>
 
     <!-- DataTables CSS -->
 	<link type="text/css" href="<c:url value='/resources/css/dataTables.bootstrap.css' />" rel="stylesheet" />
@@ -24,7 +24,7 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.min.js' />"></script>
 
     <!-- jQuery UI-->
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js' />"></script>
+	<%-- <script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js' />"></script> --%>
 
     <!-- Bootstrap Core JavaScript -->
 	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
@@ -36,7 +36,7 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/sb-admin-2.js' />"></script>
 
     <!-- common JavaScript -->
-	<script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script>
+	<%-- <script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script> --%>
 
     <!-- DataTables JavaScript -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js' />"></script>
