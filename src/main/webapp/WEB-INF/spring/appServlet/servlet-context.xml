@@ -26,9 +26,9 @@
 		class="com.clustering.project.component.CustomizeHandlerExceptionResolver">
 		<beans:property name="exceptionResolvers">
 			<beans:list>
-				<beans:bean
+<!-- 				<beans:bean
 					class="org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver" />
- 				<beans:bean
+ --> 				<beans:bean
 					class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 					<beans:property name="exceptionMappings">
 						<beans:props>

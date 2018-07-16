@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 import org.springframework.web.servlet.view.RedirectView;
 
-@Component
 public class CustomizeHandlerExceptionResolver extends HandlerExceptionResolverComposite {
 
 	@Override
