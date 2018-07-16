@@ -26,15 +26,14 @@
 		class="com.clustering.project.component.CustomizeHandlerExceptionResolver">
 		<beans:property name="exceptionResolvers">
 			<beans:list>
-				<beans:bean
+ 				<beans:bean
 					class="org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver" />
  				<beans:bean
 					class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 					<beans:property name="exceptionMappings">
 						<beans:props>
-							<beans:prop key="org.springframework.dao.DataAccessException">/exception/handlerexception</beans:prop>
-							<beans:prop key="freemarker.core.InvalidReferenceException">/exception/handlerexception</beans:prop>
-							<beans:prop key="NumberFormatException">/exception/handlerexception</beans:prop>
+							<beans:prop key="org.springframework.dao.DataAccessException" />
+							<beans:prop key="org.apache.tiles.request.render.CannotRenderException" />
 						</beans:props>
 					</beans:property>
 					<beans:property name="defaultErrorView" value="/exception/handlerexception" />

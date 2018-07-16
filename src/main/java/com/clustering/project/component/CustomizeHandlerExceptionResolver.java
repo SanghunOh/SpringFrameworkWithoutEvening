@@ -11,13 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 import org.springframework.web.servlet.view.RedirectView;
 
-@Component
 public class CustomizeHandlerExceptionResolver extends HandlerExceptionResolverComposite {
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
 			Exception exception) {
-		super.resolveException(request, response, handler, exception);
+//		super.resolveException(request, response, handler, exception);
 //        if (handler instanceof HandlerMethod) {
 //            HandlerMethod hm = (HandlerMethod) handler;
 //            ErrorView errorView = hm.getMethodAnnotation(ErrorView.class);
