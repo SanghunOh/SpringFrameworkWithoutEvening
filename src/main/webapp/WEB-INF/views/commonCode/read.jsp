@@ -10,6 +10,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" method="POST" action="<c:url value='/commonCode/edit' />">
+							<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />                            
                                     <input type="hidden" name="PARENT_COMMON_CODE_ID" value="${resultMap.PARENT_COMMON_CODE_ID}">
                                     <div class="form-group">
 										<label>COMMON_CODE_ID Static Control</label>

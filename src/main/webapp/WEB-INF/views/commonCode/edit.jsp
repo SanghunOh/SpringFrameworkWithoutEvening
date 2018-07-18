@@ -10,6 +10,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form role="form" method="POST" action="<c:url value='/commonCode/merge' />">
+							<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />                            
                                         <input type="hidden" name="forwardView" value="/commonCode/read">
                                         <input type="hidden" name="ATTRIBUTION_1" value="">
                                         <input type="hidden" name="ATTRIBUTION_2" value="">

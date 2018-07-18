@@ -26,6 +26,7 @@ public class MemberInfo implements UserDetails {
 		this.memberID = (String) resultMember.get("MEMBER_ID");
 		this.email = (String) resultMember.get("EMAIL");
 		this.memberName = (String) resultMember.get("NAME");
+//		this.password = (String) resultMember.get("PASSWORD");
 		this.password = (String) resultMember.get("CRYPT_PASSWORD");
 		this.authorities = authorities;
 	}

@@ -16,7 +16,8 @@
 							</c:if>
                     	</fieldset>
                         <form role="form" action="<c:url value='/j_spring_security_check' />" method='POST'>
-                            <fieldset>
+							<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />                            
+							<fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="member ID" name="email" type="text" value="system_admin" autofocus>
                                 </div>
