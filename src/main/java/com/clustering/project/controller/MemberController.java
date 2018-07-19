@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,11 +34,10 @@ public class MemberController {
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView actionMethod(MapParamCollector requestMap, @PathVariable String action,
 			ModelAndView modelandView, Principal principal) {
-/*		if(principal != null) {
-			String MemberName = ((MemberInfo) principal).getMemberName();
-			((MemberInfo)principal).setMemberName("Super Tester");
+		MemberInfo currentUser = (MemberInfo) ((Authentication) principal).getPrincipal();
+		if(currentUser != null) {
+			currentUser.setMemberName("Super Tester");
 		}
-*/
 		String viewName = MAPPING + action ;
 
 		Map<Object, Object> paramMap = requestMap.getMap();
