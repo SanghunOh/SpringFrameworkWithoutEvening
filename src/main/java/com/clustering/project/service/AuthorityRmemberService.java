@@ -41,8 +41,14 @@ public class AuthorityRmemberService {
 	public Object insertObject(Object dataMap) {
 		String sqlMapId = "authorityRmember.delete";
 		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object campareObject = ((Map)dataMap).get("AUTHORITY_ID");
+		
+		if(campareObject instanceof List) {
+			sqlMapId = "authorityRmember.insert";
+		} else {
+			sqlMapId = "authorityRmember.merge";
+		}
 
-		sqlMapId = "authorityRmember.insert";
 		resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
 		
 		return resultKey;
