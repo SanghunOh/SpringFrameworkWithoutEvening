@@ -6,6 +6,7 @@
  */
 package com.clustering.project.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.clustering.project.component.MapParamCollector;
+import com.clustering.project.security.MemberInfo;
 import com.clustering.project.service.MemberService;
 
 @Controller
@@ -30,8 +32,12 @@ public class MemberController {
 	
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView actionMethod(MapParamCollector requestMap, @PathVariable String action,
-			ModelAndView modelandView) {
-
+			ModelAndView modelandView, Principal principal) {
+/*		if(principal != null) {
+			String MemberName = ((MemberInfo) principal).getMemberName();
+			((MemberInfo)principal).setMemberName("Super Tester");
+		}
+*/
 		String viewName = MAPPING + action ;
 
 		Map<Object, Object> paramMap = requestMap.getMap();
