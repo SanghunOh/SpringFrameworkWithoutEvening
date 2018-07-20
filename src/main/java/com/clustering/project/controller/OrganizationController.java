@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.clustering.project.component.MapParamCollector;
 import com.clustering.project.service.OrganizationService;
 
 /**
@@ -37,9 +39,9 @@ public class OrganizationController {
     
 	// Receive Parameters from Html Using @RequestParam Map with @PathVariable
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
+	public ModelAndView actionMethod(MapParamCollector paramMethodMap, @PathVariable String action,
 			ModelAndView modelandView, ModelMap modelMap) {
-
+		Map<Object, Object> paramMap = paramMethodMap.getMap();
 		String viewName = MAPPING + action;
 		String forwardView = (String) paramMap.get("forwardView") ;
 
@@ -71,6 +73,18 @@ public class OrganizationController {
 		modelMap.put("paramMap", paramMap);
 		modelMap.put("resultMap", resultMap);
 		modelandView.addObject("resultList", resultList);
+		return modelandView;
+	}
+
+
+	// Receive MultipartFile
+	@RequestMapping(value = "/sample_organization/file", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView actionMethodFile(@RequestParam("ATTACHEDFILES") MultipartFile paramMap, ModelAndView modelandView) {
+		String viewName = MAPPING + "read";
+
+		modelandView.setViewName(viewName);
+		modelandView.addObject("resultMap", paramMap);
+		
 		return modelandView;
 	}
 }

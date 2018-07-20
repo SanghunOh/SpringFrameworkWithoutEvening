@@ -34,8 +34,8 @@ public class MemberController {
 	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView actionMethod(MapParamCollector requestMap, @PathVariable String action,
 			ModelAndView modelandView, Principal principal) {
-		MemberInfo currentUser = (MemberInfo) ((Authentication) principal).getPrincipal();
-		if(currentUser != null) {
+		if(principal != null) {
+			MemberInfo currentUser = (MemberInfo) ((Authentication) principal).getPrincipal();
 			currentUser.setMemberName("Super Tester");
 		}
 		String viewName = MAPPING + action ;

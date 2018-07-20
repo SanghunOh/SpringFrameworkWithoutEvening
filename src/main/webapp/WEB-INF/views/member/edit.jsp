@@ -59,13 +59,14 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Form Elements
+                            Form Elements <img src="<c:url value='/resources/uploads/cat.jpg' />" alt="" height="25" width="25">
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <form id="" role="form" method="POST" action="<c:url value='/member/merge' />" enctype="multipart/form-data">
 	                                    <input type="hidden" name="forwardView" value="/member/read" />
+	                                    <input type="hidden" name="AUTHORITY_ID" value="ROLE_GUEST">
 	                                    <input type="hidden" name="MEMBER_SEQ" value="${resultMap.MEMBER_SEQ }" />
                                         <div class="form-group">
                                             <label>MEMBER_ID Text Input </label>

@@ -14,3 +14,9 @@ values
 
 select * from CIP_MEMBER
 where Member_id = 'system';
+(    ?      , ?     , ?     , sysdate     , ?     , sysdate    )
+
+delete from CIP_AUTHORITY_MEMBER 
+WHERE MEMBER_SEQ in (select MEMBER_SEQ from CIP_MEMBER where MEMBER_ID = 'test02');
+
+delete from CIP_MEMBER WHERE MEMBER_ID = 'test02';

@@ -34,7 +34,7 @@ public class OrganizationService{
 		return resultObject;
 	}
 
-	public Object saveObject(Map<String, Object> dataMap) {
+	public Object saveObject(Map<Object, Object> dataMap) {
 		String uniqueSequence = (String) dataMap.get("ORGANIZATION_SEQ");
 		
 		if("".equals(uniqueSequence)){

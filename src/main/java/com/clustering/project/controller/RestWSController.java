@@ -48,7 +48,6 @@ public class RestWSController {
 			resultList = (List<Object>) organizationService.getList(paramMap);
 		} 
 
-
 		return resultList;	
 	}
 	

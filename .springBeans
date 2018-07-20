@@ -7,9 +7,17 @@
 	</configSuffixes>
 	<enableImports><![CDATA[true]]></enableImports>
 	<configs>
+<<<<<<< HEAD
 		<config>src/main/webapp/WEB-INF/spring/appServlet/security-context07_detailService.xml</config>
 	</configs>
 	<autoconfigs>
+=======
+		<config>src/main/webapp/WEB-INF/spring/appServlet/mail-context.xml</config>
+	</configs>
+	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+>>>>>>> refs/heads/Resolver
 	</autoconfigs>
 	<configSets>
 	</configSets>

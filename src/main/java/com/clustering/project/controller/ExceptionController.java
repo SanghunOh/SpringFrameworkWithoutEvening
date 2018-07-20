@@ -4,13 +4,12 @@
 package com.clustering.project.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,43 +26,21 @@ public class ExceptionController {
 	private final static String MAPPING = "/exception/";
 
 	// access denied page
-	@RequestMapping(value = MAPPING+"{action}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView actionMethod(@RequestParam MultiValueMap<Object, Object> paramMultiMap
-			, @RequestParam Map<String, Object> paramMap, @PathVariable String action,
-			ModelAndView modelandView, Principal user) {
+	@RequestMapping(value = {MAPPING+"{action}","/404"}, method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
+			ModelAndView modelandView, Principal user, HttpServletRequest request) {
 
 		String viewName = MAPPING + action ;
-		String forwardView = (String) paramMap.get("forwardView") ;
 
-		Map<String, Object> resultMap = new HashMap<String, Object>() ;
-		List<Object> resultList = new ArrayList<Object>();
-		
-		Map<String, Object> errorMessageMap = new HashMap<String, Object>() ;
-		String errorTitle = action;
-		String errorMessage = null;
-		
-		// divided depending on action value
-		if (user != null) {
-			errorMessage = "Hi [" + user.getName() 
-					+ "], you do not have permission to access this page!";
-		} else {
-			errorMessage = "You do not have permission to access this page!";
-		}
-
-		if(forwardView != null){
-			viewName = forwardView;
-		}
-		
-		errorMessageMap.put("errorTitle", errorTitle);
-		errorMessageMap.put("errorMessage", errorMessage);
+		Map<String, Object> errorMessageMap = new HashMap<String, Object>() ;		
+		errorMessageMap.put("errorTitle", request.getAttribute("javax.servlet.error.status_code"));
+		errorMessageMap.put("errorMessage", request.getAttribute("javax.servlet.error.message"));
 
 		modelandView.setViewName(viewName);
 
 		modelandView.addObject("errorMessageMap", errorMessageMap);
 		modelandView.addObject("paramMap", paramMap);
-		modelandView.addObject("resultMap", resultMap);
-		modelandView.addObject("resultList", resultList);
-		
+
 		return modelandView;
 	}
 }

@@ -23,6 +23,7 @@
 			<list>
 				<value>classpath:jdbc.properties</value>
 				<value>classpath:mail.properties</value>
+				<value>classpath:file.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -44,7 +45,8 @@
 
 	<aop:config>
 		<aop:pointcut id="allServices"
-			expression="execution(* com.clustering.project.service.*.*(..))" />
+			expression="execution(* 
+		com.clustering.project.service.*.*(..))" />
 		<aop:advisor pointcut-ref="allServices" advice-ref="txAdvice" />
 	</aop:config>
 	
