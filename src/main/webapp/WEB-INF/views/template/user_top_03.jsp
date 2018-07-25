@@ -17,8 +17,16 @@
         	
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <sec:authorize access="isAuthenticated()">${principalBean.memberName }</sec:authorize> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> 
+        <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="fa fa-sign-in fa-fw"></i> Single Mailing</a>
+            </li>
+            <li><a href="#"><i class="fa fa-random fa-fw"></i> Double Mailing</a>
+            </li>
+        </ul>
+            <i class="fa fa-caret-down"></i>
         </a>
+        <sec:authorize access="hasRole('ROLE_USER')">
         <ul class="dropdown-menu dropdown-user">
         
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -30,6 +38,7 @@
 	            <a href="<c:url value='/j_spring_security_logout' />"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
         </ul>
+        </sec:authorize> 
         <!-- /.dropdown-user -->
     </li>
 
