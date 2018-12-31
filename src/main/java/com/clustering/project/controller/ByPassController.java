@@ -4,7 +4,7 @@
  * @version     %I%, %G%
  * @since       1.0
  */
-package net.yojulab.swe.controller;
+package com.clustering.project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
