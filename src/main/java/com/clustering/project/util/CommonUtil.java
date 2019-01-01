@@ -27,10 +27,8 @@ public class CommonUtil {
 	 */
 	public List<String> getSequenceList(int cnt) {
 		List<String> result = new ArrayList<String>();
-		UUID uuid;
 		for(int i=0; i<= cnt; i++){
-			uuid = UUID.randomUUID();
-			result.add(uuid.toString().replaceAll("-", "")+i);
+			result.add(this.getUniqueSequence());
 		}
 		
 		return result ;
