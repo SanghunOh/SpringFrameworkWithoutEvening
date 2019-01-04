@@ -117,10 +117,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Member<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<c:url value='/member/list' />">Member List</a>
+                                    <a href="<c:url value='/member?action=list' />">Member List</a>
                                 </li>
                                 <li>
-                                    <a href="<c:url value='/member/edit' />">Member Edit</a>
+                                    <a href="<c:url value='/member?action=edit' />">Member Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -185,14 +185,14 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" method="GET" action="<c:url value='/organization/edit' />">
+                                    <form role="form" method="POST" action="<c:url value='/organization/edit' />">
 	                                    <div class="form-group">
 											<label>NAME Static Control</label>
-											<p class="form-control-static">${resultMap.NAME}</p>
+											<p class="form-control-static">${paramMap.NAME}</p>
 	                                    </div>
                                         <div class="form-group">
 											<label>TELEPHONE Static Control</label>
-											<p class="form-control-static">${resultMap.TELEPHONE}</p>
+											<p class="form-control-static">${paramMap.TELEPHONE}</p>
                                         </div>
                                         <button type="submit" class="btn btn-default">Add Button</button>
 										<a href="<c:url value='/organization/edit' />">Add With a Tag</a>
@@ -202,15 +202,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
 										<label>ORGANIZATION_SEQ Static Control</label>
-										<p class="form-control-static">${resultMap.ORGANIZATION_SEQ}</p>
+										<p class="form-control-static">${paramMap.ORGANIZATION_SEQ}</p>
                                     </div>
                                     <div class="form-group">
 										<label>PARENT_ORGANIZATION_SEQ Static Control</label>
-										<p class="form-control-static">${resultMap.PARENT_ORGANIZATION_SEQ}</p>
+										<p class="form-control-static">${paramMap.PARENT_ORGANIZATION_SEQ}</p>
                                     </div>
                                     <div class="form-group">
 										<label>ORDER_NUMBER Static Control</label>
-										<p class="form-control-static">${resultMap.ORDER_NUMBER}</p>
+										<p class="form-control-static">${paramMap.ORDER_NUMBER}</p>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

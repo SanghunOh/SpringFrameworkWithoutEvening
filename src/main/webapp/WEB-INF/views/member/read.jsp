@@ -117,10 +117,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Member<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<c:url value='/member/list' />">Member List</a>
+                                    <a href="<c:url value='/member?action=list' />">Member List</a>
                                 </li>
                                 <li>
-                                    <a href="<c:url value='/member/edit' />">Member Edit</a>
+                                    <a href="<c:url value='/member?action=edit' />">Member Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -185,7 +185,8 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" method="POST" action="<c:url value='/member/edit' />">
+                                    <form role="form" method="POST" action="<c:url value='/member' />">
+                                    <input type="hidden" name="action" value="edit" />
 	                                    <div class="form-group">
 											<label>MEMBER_ID Static Control</label>
 											<p class="form-control-static">${resultMap.MEMBER_ID}</p>
@@ -207,7 +208,7 @@
 											<p class="form-control-static">${resultMap.CELLPHONE}</p>
 	                                    </div>
                                         <button type="submit" class="btn btn-default">Add Button</button>
-										<a href="<c:url value='/member/edit' />">Add With a Tag</a>
+										<a href="<c:url value='/member?action=edit' />">Add With a Tag</a>
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
