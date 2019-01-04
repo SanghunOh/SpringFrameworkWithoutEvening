@@ -28,12 +28,18 @@ import com.clustering.project.service.CommonCodeService;
 public class CommonCodeController {
 
 	@Autowired
+	private ApplicationContext _applicationContext;
+	
 	private CommonCodeService service;
     
 	// Receive Parameters from Html Using @RequestParam Map with @PathVariable
 	@RequestMapping(value = "/commonCode/{action}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView actionMethod(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
 			ModelAndView modelandView) {
+
+	    //Spring will dynamically “inject” the implemenations with setter way
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("servlet-context.xml");
+        service = (CommonCodeService) _applicationContext.getBean("commonCodeService");
 
         String viewName = "/commonCode/" ;
 

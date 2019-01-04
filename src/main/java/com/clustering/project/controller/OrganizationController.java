@@ -33,9 +33,6 @@ import com.clustering.project.service.OrganizationService;
 @RequestMapping(value = "/organization")
 public class OrganizationController {
 
-	@Autowired
-	private OrganizationService service;
-
 	// ? add View class
 	@RequestMapping(value = "/edit", method = { RequestMethod.GET, RequestMethod.POST })
 	public Model edit(OrganizationBean paramMap, HttpServletRequest request, Model model) {
@@ -52,6 +49,8 @@ public class OrganizationController {
 		
 		String viewName = "/organization/read";
 
+		OrganizationService service = new OrganizationService();
+		
 		Map<String, Object> resultMap = (Map<String, Object>) service.getObject(viewName, paramMap);
 
 		modelandView.setViewName(viewName);
@@ -63,9 +62,18 @@ public class OrganizationController {
 
 	}
 
+	@Autowired
+	private ApplicationContext _applicationContext;
+
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView list(@RequestParam Map<String, Object> paramMap, ModelAndView modelandView) {
 		
+		// withOut ContextLoaderListener
+		OrganizationBean bean = (OrganizationBean) _applicationContext.getBean("organizationBean");
+
+		// 
+		OrganizationService service = (OrganizationService) _applicationContext.getBean("organizationService");
+
 		String viewName = "/organization/list";
 
 		List<Object> resultList = service.getList(viewName, paramMap);
