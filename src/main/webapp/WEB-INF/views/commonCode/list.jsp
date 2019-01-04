@@ -2,12 +2,12 @@
     <script>
     $(document).ready(function() {
         $("#layerModal").on("click",function(){
-    		//fn_selectContentsPop();
+    		fn_selectContentsPop();
     	});
     });
 
     var fn_selectContentsPop = function(){
-		var url = "<c:url value="/commonCode/popup" />";
+		var url = "<c:url value='/commonCode/popup' />";
 		common.layerPopup(url,"#myModal");
 	};
     </script>
@@ -22,7 +22,7 @@
 							<button id="layerModal" class="btn btn-primary btn-sm">
                             	Launch Demo Modal with Ajax and Popup
                             </button>
-							<button type="submit" class="btn btn-primary btn-sm">
+ 							<button type="submit" class="btn btn-primary btn-sm">
                             	Delete
                             </button>
                         </div>

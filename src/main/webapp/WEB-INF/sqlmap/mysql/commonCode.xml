@@ -101,14 +101,10 @@
 
 	<delete id="delete" parameterType="Map">
 		delete from CIP_COMMON_CODE
-		<where>
-		COMMON_CODE_ID in (select COMMON_CODE_ID from CIP_COMMON_CODE
-							start with COMMON_CODE_ID in 
-									<foreach collection="COMMON_CODE_ID" item="item" index="index"
+		COMMON_CODE_ID in 
+			<foreach collection="COMMON_CODE_ID" item="item" index="index"
 										separator="," open="(" close=")">
-										'${COMMON_CODE_ID[index]}'
-									</foreach>
-							connect by prior COMMON_CODE_ID = PARENT_COMMON_CODE_ID)
-		</where>	
+				'${COMMON_CODE_ID[index]}'
+			</foreach>
 	</delete>
 </mapper>

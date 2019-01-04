@@ -2,7 +2,7 @@
     <script>
     $(document).ready(function() {
         $("#layerModal").on("click",function(){
-    		//fn_selectContentsPop();
+    		fn_selectContentsPop();
     	});
     });
 
