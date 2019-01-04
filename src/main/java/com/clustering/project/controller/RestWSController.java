@@ -37,7 +37,7 @@ public class RestWSController {
 		String viewName = "/organization/list";
 		
 		if ("organizationList".equalsIgnoreCase(action)) {
-			resultObject = (List<Object>) organizationService.getList(viewName, paramMap);
+			resultObject = (List<Object>) organizationService.getList(paramMap);
 		} 
  
 		return resultObject;	

@@ -1,46 +1,67 @@
 package com.clustering.project.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.clustering.project.dao.CommonCodeDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class OrganizationService implements ShareService {
+import com.clustering.project.dao.ShareDao;
+import com.clustering.project.util.CommonUtil;
 
-	private CommonCodeDao dao;
+@Service
+public class OrganizationService{
+
+	@Autowired
+	private ShareDao dao;
 	
-	public OrganizationService(){}
+	@Autowired
+	private CommonUtil commonUtil;
 
-	public OrganizationService(CommonCodeDao commonCodeDao) {
-		this.dao = commonCodeDao;
-	}
+	public List<Object> getList(Object dataMap) {
+		String sqlMapId = "organization.list";
 
-	@Override
-	public List<Object> getList(String sqlMapId, Object dataMap) {
 		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
-		return resultObject;
-	}
-
-	@Override
-	public Object getObject(String sqlMapId, Object dataMap) {
-		Map<String, Object> resultObject = new HashMap<String, Object>();
-
-		resultObject.put("NAME", "name 02");
-		resultObject.put("ORGANIZATION_SEQ", "UUID-10482983293");
-		resultObject.put("TELEPHONE", "02-2930-3920");
-		resultObject.put("ORDER_NUMBER", 2);
 		
 		return resultObject;
 	}
 
-	@Override
-	public Object saveObject(String sqlMapId, Object dataMap) {
-		return null;
+	public Object getObject(Object dataMap) {
+		String sqlMapId = "organization.read";
+
+		Object resultObject = dao.getObject(sqlMapId, dataMap);
+		
+		return resultObject;
 	}
 
-	@Override
-	public Object deleteObject(String sqlMapId, Object dataMap) {
-		return null;
+	public Object saveObject(Map<String, Object> dataMap) {
+		String uniqueSequence = (String) dataMap.get("ORGANIZATION_SEQ");
+		
+		if("".equals(uniqueSequence)){
+			uniqueSequence = commonUtil.getUniqueSequence();
+		}
+		dataMap.put("ORGANIZATION_SEQ", uniqueSequence);
+		
+		String sqlMapId = "organization.merge";
+
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		
+		sqlMapId = "organization.read";
+		
+		Object resultObject = dao.getObject(sqlMapId, dataMap);
+
+		return resultObject;
+	}
+
+	public Object deleteObject(Object dataMap) {
+		String sqlMapId = "organization.delete";
+
+		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
+
+		sqlMapId = "organization.list";
+		
+		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		
+		return resultObject;
 	}
 }

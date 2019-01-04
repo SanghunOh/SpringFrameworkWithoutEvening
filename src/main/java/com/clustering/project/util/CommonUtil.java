@@ -15,7 +15,7 @@ public class CommonUtil {
 	 */
     public String getUniqueSequence() {
 		UUID uuid = UUID.randomUUID();
-		return uuid.toString();
+		return uuid.toString().replaceAll("-", "");
 //    	String longTime = new Long((new Date().getTime())).toString();
 //        return longTime;
     }
@@ -27,10 +27,8 @@ public class CommonUtil {
 	 */
 	public List<String> getSequenceList(int cnt) {
 		List<String> result = new ArrayList<String>();
-		UUID uuid;
 		for(int i=0; i<= cnt; i++){
-			uuid = UUID.randomUUID();
-			result.add(uuid.toString()+i);
+			result.add(this.getUniqueSequence());
 		}
 		
 		return result ;
