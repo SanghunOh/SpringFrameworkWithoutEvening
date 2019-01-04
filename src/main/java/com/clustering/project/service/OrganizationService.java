@@ -4,17 +4,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.clustering.project.dao.CommonCodeDao;
 
-@Service
 public class OrganizationService implements ShareService {
 
-	@Autowired
 	private CommonCodeDao dao;
 	
+	public OrganizationService(){}
+
+	public OrganizationService(CommonCodeDao commonCodeDao) {
+		this.dao = commonCodeDao;
+	}
+
 	@Override
 	public List<Object> getList(String sqlMapId, Object dataMap) {
 		List<Object> resultObject = dao.getList(sqlMapId, dataMap);

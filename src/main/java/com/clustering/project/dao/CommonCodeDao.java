@@ -3,9 +3,6 @@ package com.clustering.project.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
 public class CommonCodeDao {
 
 	public List<Object> getList(String sqlMapId, Object dataMap) {

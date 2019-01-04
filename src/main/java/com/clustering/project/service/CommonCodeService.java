@@ -2,15 +2,10 @@ package com.clustering.project.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.clustering.project.dao.CommonCodeDao;
 
-@Service
 public class CommonCodeService {
 
-	@Autowired
 	private CommonCodeDao dao;
 	
 	public void setDao(CommonCodeDao commonCodeDao) {
