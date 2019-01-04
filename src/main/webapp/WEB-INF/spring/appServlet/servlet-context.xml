@@ -25,5 +25,4 @@
 
 	<!-- add for scaning any context configration -->	
 	<context:annotation-config/>
-
 </beans:beans>

@@ -1,41 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Bootstrap Core CSS -->
-	<link type="text/css" href="/resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/resources/css/bootstrap.min.css' />" rel="stylesheet" />
 
     <!-- MetisMenu CSS -->
-	<link type="text/css" href="/resources/css/metisMenu.min.css" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/resources/css/metisMenu.min.css' />" rel="stylesheet" />
 
     <!-- Custom CSS -->
-	<link type="text/css" href="/resources/css/sb-admin-2.css" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/resources/css/sb-admin-2.css' />" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-	<link type="text/css" href="/resources/css/font-awesome.css" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/resources/css/font-awesome.css' />" rel="stylesheet" />
 
     <!-- DataTables CSS -->
-	<link type="text/css" href="/resources/css/dataTables.bootstrap.css" rel="stylesheet" />
+	<link type="text/css" href="<c:url value='/resources/css/dataTables.bootstrap.css' />" rel="stylesheet" />
 
     <!-- jQuery -->
-	<script type="text/javascript" src="/resources/js/jquery.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery.min.js' />"></script>
 
     <!-- Bootstrap Core JavaScript -->
-	<script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-	<script type="text/javascript" src="/resources/js/metisMenu.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/metisMenu.min.js' />"></script>
 
     <!-- Custom Theme JavaScript -->
-	<script type="text/javascript" src="/resources/js/sb-admin-2.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/sb-admin-2.js' />"></script>
 
     <!-- DataTables JavaScript -->
-	<script type="text/javascript" src="/resources/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="/resources/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/dataTables.bootstrap.min.js' />"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Clustering Incubation Center</a>
+                <a class="navbar-brand" href="<c:url value='/' />">Clustering Incubation Center</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -88,7 +88,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<c:url value='/login' />"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -112,16 +112,16 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<c:url value='/' />"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Organization<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/organization/list">Organization List</a>
+                                    <a href="<c:url value='/organization/list' />">Organization List</a>
                                 </li>
                                 <li>
-                                    <a href="/organization/edit">Organization Edit</a>
+                                    <a href="<c:url value='/organization/edit' />">Organization Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -130,10 +130,10 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Member<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/member/list">Member List</a>
+                                    <a href="<c:url value='/member/list' />">Member List</a>
                                 </li>
                                 <li>
-                                    <a href="/member/edit">Member Edit</a>
+                                    <a href="<c:url value='/member/edit' />">Member Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -142,10 +142,10 @@
                             <a href="#"><i class="fa fa-file-code-o fa-fw"></i> Common Code<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/commonCode/list">Common Code List</a>
+                                    <a href="<c:url value='/commonCode/list' />">Common Code List</a>
                                 </li>
                                 <li>
-                                    <a href="/commonCode/edit">Common Code Edit</a>
+                                    <a href="<c:url value='/commonCode/edit' />">Common Code Edit</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
