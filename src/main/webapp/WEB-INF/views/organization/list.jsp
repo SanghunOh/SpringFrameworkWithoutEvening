@@ -2,7 +2,7 @@
     <script>
     $(document).ready(function() {
         $("#layerModal").click(function(){
-           //$("#myModal").modal();
+           $("#myModal").modal();
         });
     });
     </script>
