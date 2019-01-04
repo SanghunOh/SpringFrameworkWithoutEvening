@@ -6,7 +6,6 @@
  */
 package com.clustering.project.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * get it Mapping classlevel (JavaBean, HttpServletRequest, Model, View, ModelAndView)
  */
 
-@Controller
+//@Controller
 public class ByPassController {
 
 	// by pass URL class
-	@RequestMapping(value = "/*/*")
+	@RequestMapping(value = "/*/*")			//same thing 'value = "/**'  
 	public void byPass() {
 	}
 }
