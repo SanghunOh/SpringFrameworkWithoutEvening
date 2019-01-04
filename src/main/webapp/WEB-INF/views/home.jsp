@@ -110,7 +110,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Organization<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<c:url value='/organization/list' />">Organization List</a>
+                                    <a href="#">Organization List</a>
                                 </li>
                                 <li>
                                     <a href="<c:url value='/organization/edit' />">Organization Edit</a>

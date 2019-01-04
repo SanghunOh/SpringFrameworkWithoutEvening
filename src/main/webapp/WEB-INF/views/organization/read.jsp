@@ -188,11 +188,11 @@
                                     <form role="form" method="POST" action="<c:url value='/organization/edit' />">
 	                                    <div class="form-group">
 											<label>NAME Static Control</label>
-											<p class="form-control-static">${paramMap.NAME}</p>
+											<p class="form-control-static">${resultMap.NAME}</p>
 	                                    </div>
                                         <div class="form-group">
 											<label>TELEPHONE Static Control</label>
-											<p class="form-control-static">${paramMap.TELEPHONE}</p>
+											<p class="form-control-static">${resultMap.TELEPHONE}</p>
                                         </div>
                                         <button type="submit" class="btn btn-default">Add Button</button>
 										<a href="<c:url value='/organization/edit' />">Add With a Tag</a>
@@ -202,15 +202,15 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
 										<label>ORGANIZATION_SEQ Static Control</label>
-										<p class="form-control-static">${paramMap.ORGANIZATION_SEQ}</p>
+										<p class="form-control-static">${resultMap.ORGANIZATION_SEQ}</p>
                                     </div>
                                     <div class="form-group">
 										<label>PARENT_ORGANIZATION_SEQ Static Control</label>
-										<p class="form-control-static">${paramMap.PARENT_ORGANIZATION_SEQ}</p>
+										<p class="form-control-static">${resultMap.PARENT_ORGANIZATION_SEQ}</p>
                                     </div>
                                     <div class="form-group">
 										<label>ORDER_NUMBER Static Control</label>
-										<p class="form-control-static">${paramMap.ORDER_NUMBER}</p>
+										<p class="form-control-static">${resultMap.ORDER_NUMBER}</p>
                                     </div>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
