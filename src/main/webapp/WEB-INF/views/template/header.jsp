@@ -23,6 +23,9 @@
     <!-- jQuery -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.min.js' />"></script>
 
+    <!-- jQuery UI-->
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-ui.js' />"></script>
+
     <!-- Bootstrap Core JavaScript -->
 	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
 
@@ -31,6 +34,9 @@
 
     <!-- Custom Theme JavaScript -->
 	<script type="text/javascript" src="<c:url value='/resources/js/sb-admin-2.js' />"></script>
+
+    <!-- common JavaScript -->
+	<script type="text/javascript" src="<c:url value='/resources/js/common.js' />"></script>
 
     <!-- DataTables JavaScript -->
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.dataTables.min.js' />"></script>
@@ -46,6 +52,7 @@
         $("#selecctall").change(function() {
 			$(".checkbox").prop('checked', $(this).prop("checked"));
 		});
+
     });
     </script>
     

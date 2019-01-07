@@ -13,7 +13,16 @@
 			<tiles:insertAttribute name="layout.left" />
 	    <!-- /.navbar-static-side -->
         </nav>
-		<tiles:insertAttribute name="layout.body" />
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"><tiles:getAsString name="layout.deeps" /></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+			<tiles:insertAttribute name="layout.body" />
+        </div>
+        <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->	
 </body>

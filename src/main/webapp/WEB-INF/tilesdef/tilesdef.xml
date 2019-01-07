@@ -5,31 +5,8 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	
-	<!-- temp template -->
-	<definition name="layout.temp" template="/WEB-INF/views/template/layout_temp.jsp">
-		<put-attribute name="layout.header"
-			value="/WEB-INF/views/template/header.jsp" />
-	    <put-attribute name="layout.left"
-			value="/WEB-INF/views/template/user_left.jsp" />
-   	</definition>
-
-	<!-- organization -->
-	<definition name="/organization/list" extends="layout.temp">
-		<put-attribute name="layout.title" value="member > list" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/organization/list.jsp" />
-	</definition>
-	<definition name="/organization/edit" extends="layout.user">
-		<put-attribute name="layout.title" value="member > edit" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/organization/edit.jsp" />
-	</definition>
-	<definition name="/organization/read" extends="layout.user">
-		<put-attribute name="layout.title" value="member > read" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/organization/read.jsp" />
-	</definition>
-	
-	<!-- User template -->
-	<definition name="layout.user" template="/WEB-INF/views/template/layout_user_main.jsp">
+	<!-- Regular template -->
+	<definition name="layout.regular" template="/WEB-INF/views/template/layout_regular.jsp">
 		<put-attribute name="layout.header"
 			value="/WEB-INF/views/template/header.jsp" />
 	    <put-attribute name="layout.left"
@@ -37,30 +14,34 @@
 	    <put-attribute name="layout.top"
 			value="/WEB-INF/views/template/user_top.jsp" />
    	</definition>
-
-	<!-- home by user >
-	<definition name="home" template="/WEB-INF/views/template/layout_user_main.jsp">
-		<put-attribute name="layout.title" value="template home " />
-		<put-attribute name="layout.header" value="/WEB-INF/views/template/header.jsp" />
-	    <put-attribute name="layout.left" value="/WEB-INF/views/template/user_left.jsp" />
-	    <put-attribute name="layout.top" value="/WEB-INF/views/template/user_top.jsp" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/.jsp" />
-   	</definition>
-
-	<definition name="home" extends="layout.user">
-		<put-attribute name="layout.title" value="Here home" />
-		<put-attribute name="layout.body" value="/WEB-INF/views/home.jsp" />
-	</definition-->
-
-	<definition name="*" extends="layout.user">
+	
+	<!-- home, login, loginForm misc -->
+	<definition name="*" extends="layout.regular">
 		<put-attribute name="layout.title" value="{1}" />
 		<put-attribute name="layout.body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 
-	<!-- shared view uri by user -->
-	<definition name="/*/*" extends="layout.user">
+	
+	<!-- Normal template -->
+	<definition name="layout.normal" template="/WEB-INF/views/template/layout_normal.jsp">
+		<put-attribute name="layout.header"
+			value="/WEB-INF/views/template/header.jsp" />
+	    <put-attribute name="layout.left"
+			value="/WEB-INF/views/template/user_left.jsp" />
+	    <put-attribute name="layout.top"
+			value="/WEB-INF/views/template/user_top.jsp" />
+   	</definition>
+	
+	<!-- any URI -->
+	<definition name="/*/*" extends="layout.normal">
+		<put-attribute name="layout.title" value="{1} > {2}" />
+		<put-attribute name="layout.deeps" value="{1} > {2}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<!-- Layer Popup -->
+	<definition name="*/*" template="/WEB-INF/views/template/layout_popup.jsp">
 		<put-attribute name="layout.title" value="{1} > {2}" />
 		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
-	
 </tiles-definitions>
