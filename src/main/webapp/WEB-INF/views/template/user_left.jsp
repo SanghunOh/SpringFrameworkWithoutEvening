@@ -47,6 +47,9 @@
                         <a href="<c:url value='/member/list' />">Member List</a>
                     </li>
                     <li>
+                        <a href="<c:url value='/member/list_pagination' />">Member List with Pagination</a>
+                    </li>
+                    <li>
                         <a href="<c:url value='/member/edit' />">Member Edit</a>
                     </li>
                 </ul>

@@ -50,6 +50,8 @@ public class MemberController {
 			resultMap = (Map<String, Object>) service.getObject(paramMap);
 		} else if ("list".equalsIgnoreCase(action)) {
 			resultList = (List<Object>) service.getList(paramMap);
+		} else if ("list_pagination".equalsIgnoreCase(action)) {
+			resultMap = (Map<String, Object>) service.getListPagination(paramMap);
 		} else if ("delete".equalsIgnoreCase(action)) {
 			resultList = (List<Object>) service.deleteObject(paramMap);
 		} 
