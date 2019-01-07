@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="member">
+	<select id="list" resultType="Map" parameterType="Map">
+	    select 
+			MEMBER_SEQ <!-- 회원_SEQ -->
+			, MEMBER_ID <!-- 회원 ID -->
+			, PASSWORD <!-- 암호 -->
+			, NAME <!-- 명칭 -->
+			, EMAIL <!-- EMAIL -->
+			, CELLPHONE <!-- 휴대폰번호 -->
+			, ORGANIZATION_SEQ <!-- 조직 일련번호 -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		from CIP_MEMBER
+		<![CDATA[
+		where 1 = 1
+		]]>
+		order by NAME
+	</select>
+
+	<select id="listpagination" resultType="Map" parameterType="Map">
+		select result.*
+		from (
+	        select rownum as rn
+	        	, member.* 
+	        from ( select * 
+				from CIP_MEMBER
+				order by NAME ) member
+		) result	
+		where result.rn between #{pagination.pageBegin} and #{pagination.pageEnd}
+	</select>
+
+	<select id="totalcount" resultType="integer" parameterType="Map">
+	    select count(MEMBER_SEQ)
+		from CIP_MEMBER
+		<![CDATA[
+		where 1 = 1
+		]]>
+	</select>
+
+	<select id="read" resultType="Map" parameterType="Map">
+		select 
+			MEMBER_SEQ <!-- 회원_SEQ -->
+			, MEMBER_ID <!-- 회원 ID -->
+			, PASSWORD <!-- 암호 -->
+			, NAME <!-- 명칭 -->
+			, EMAIL <!-- EMAIL -->
+			, CELLPHONE <!-- 휴대폰번호 -->
+			, ORGANIZATION_SEQ <!-- 조직 일련번호 -->
+			, REGISTER_SEQ <!-- 등록자SEQ -->
+			, REGISTRY_DATE <!-- 등록일자 -->
+			, MODIFIER_SEQ <!-- 수정자_SEQ -->
+			, MODIFY_DATE <!-- 수정일자 -->
+		from CIP_MEMBER
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</select>
+
+	<insert id="merge" parameterType="Map">
+		<selectKey keyProperty="MEMBER_SEQ" resultType="String" order="AFTER">	<!-- order="BEFORE" --> 
+			SELECT MEMBER_SEQ
+			FROM CIP_MEMBER
+			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
+		</selectKey>
+	    <!--selectKey resultType="String" keyProperty="MEMBER_SEQ" order="AFTER">
+			SELECT MEMBER_SEQ
+			FROM CIP_MEMBER
+			WHERE MEMBER_SEQ = #{MEMBER_SEQ}
+		</selectKey-->
+	
+		MERGE INTO CIP_MEMBER CIP1
+		     USING (SELECT #{MEMBER_SEQ} AS MEMBER_SEQ FROM DUAL) CIP2
+		        ON (CIP1.MEMBER_SEQ = CIP2.MEMBER_SEQ)
+		 WHEN MATCHED THEN
+		    UPDATE SET
+				MEMBER_ID = #{MEMBER_ID} <!-- 회원 ID -->
+				, PASSWORD = #{PASSWORD} <!-- 암호 -->
+				, NAME = #{NAME} <!-- 명칭 -->
+				, EMAIL = #{EMAIL} <!-- EMAIL -->
+				, CELLPHONE = #{CELLPHONE} <!-- 휴대폰번호 -->
+				, ORGANIZATION_SEQ = #{ORGANIZATION_SEQ} <!-- 조직 일련번호 -->
+				, MODIFIER_SEQ = #{MODIFIER_SEQ} <!-- 수정자_SEQ -->
+				, MODIFY_DATE = sysdate <!-- 수정일자 -->
+		 WHEN NOT MATCHED THEN
+		    INSERT (
+				MEMBER_SEQ <!-- 회원_SEQ -->
+				, MEMBER_ID <!-- 회원 ID -->
+				, PASSWORD <!-- 암호 -->
+				, NAME <!-- 명칭 -->
+				, EMAIL <!-- EMAIL -->
+				, CELLPHONE <!-- 휴대폰번호 -->
+				, ORGANIZATION_SEQ <!-- 조직 일련번호 -->
+				, REGISTER_SEQ <!-- 등록자SEQ -->
+				, REGISTRY_DATE <!-- 등록일자 -->
+				, MODIFIER_SEQ <!-- 수정자_SEQ -->
+				, MODIFY_DATE <!-- 수정일자 -->
+			)
+			values(
+				#{MEMBER_SEQ} <!-- 회원_SEQ -->
+				, #{MEMBER_ID} <!-- 회원 ID -->
+				, #{PASSWORD} <!-- 암호 -->
+				, #{NAME} <!-- 명칭 -->
+				, #{EMAIL} <!-- EMAIL -->
+				, #{CELLPHONE} <!-- 휴대폰번호 -->
+				, #{ORGANIZATION_SEQ} <!-- 조직 일련번호 -->
+				, #{REGISTER_SEQ} <!-- 등록자SEQ -->
+				, sysdate <!-- 등록일자 -->
+				, #{REGISTER_SEQ} <!-- 수정자_SEQ -->
+				, sysdate <!-- 수정일자 -->
+			)
+	</insert>
+
+	<delete id="delete" parameterType="Map">
+		delete from CIP_MEMBER
+		where MEMBER_SEQ = #{MEMBER_SEQ}
+	</delete>
+</mapper>
