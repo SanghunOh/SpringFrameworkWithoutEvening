@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.clustering.project.service.AuthorityService;
 import com.clustering.project.service.OrganizationService;
 
 /**
@@ -24,6 +25,9 @@ public class RestWSController {
 	private final static String MAPPING = "/ws/";
 
 	@Autowired
+	private AuthorityService authorityService;
+
+	@Autowired
 	private OrganizationService organizationService;
 
 	// Restful
@@ -34,9 +38,9 @@ public class RestWSController {
 		Object resultObject = new Object();
 
 		// divided depending on action value
-		String viewName = "/organization/list";
-		
-		if ("organizationList".equalsIgnoreCase(action)) {
+		if ("authorityList".equalsIgnoreCase(action)) {
+			resultObject = (List<Object>) authorityService.getList(paramMap);
+		} else if ("organizationList".equalsIgnoreCase(action)) {
 			resultObject = (List<Object>) organizationService.getList(paramMap);
 		} 
  
