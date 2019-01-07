@@ -1,16 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <script>
-    $(document).ready(function() {
-        $("#layerModal").on("click",function(){
-    		fn_selectContentsPop();
-    	});
-    });
-
-    var fn_selectContentsPop = function(){
-		var url = "<c:url value='/commonCode/popup' />";
-		common.layerPopup(url,"#myModal");
-	};
-    </script>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -19,12 +7,6 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Advanced Tables
-							<button id="layerModal" class="btn btn-primary btn-sm">
-                            	Launch Demo Modal with Ajax and Popup
-                            </button>
- 							<button type="submit" class="btn btn-primary btn-sm">
-                            	Delete
-                            </button>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -76,7 +58,3 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-	<!-- Modal -->        
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	</div>
-	<!-- /.modal -->	    

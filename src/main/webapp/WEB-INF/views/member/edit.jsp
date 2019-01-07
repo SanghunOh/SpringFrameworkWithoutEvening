@@ -50,7 +50,7 @@
 	
 	$(document).ready(function() {
        // show Authorities with Ajax
-       fn_setFormTagCheckbox("<c:url value='/ws/authorityList' />", "authorityDIV");
+       //fn_setFormTagCheckbox("<c:url value='/ws/authorityList' />", "authorityDIV");
        fn_setFormTagSelect("<c:url value='/ws/organizationList' />", "organizationDIV");
     });
     </script>
