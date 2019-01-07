@@ -32,25 +32,6 @@
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</beans:bean>
 	
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory >
-	<beans:bean id="tilesViewResolver"
-        class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <beans:property name="viewClass">
-            <beans:value>
-                org.springframework.web.servlet.view.tiles3.TilesView
-            </beans:value>
-        </beans:property>
-        <beans:property name="order" value="1"/>
-    </beans:bean-->
-
-	<!-- Popup ViewResolver >
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
-	</beans:bean -->	
-
 	<context:component-scan base-package="com.clustering.project" />
 
 	<!-- add for scaning any context configration -->	

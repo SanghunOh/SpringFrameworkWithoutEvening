@@ -1,27 +1,29 @@
 package com.clustering.project.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clustering.project.dao.ShareDao;
+import com.clustering.project.dao.OrganizationDao;
 import com.clustering.project.util.CommonUtil;
 
 @Service
 public class OrganizationService{
 
-	@Autowired
-	private ShareDao dao;
+//	@Autowired
+//	private ShareDao dao;
 	
+	@Autowired
+	private OrganizationDao dao;
+
 	@Autowired
 	private CommonUtil commonUtil;
 
-	public List<Object> getList(Object dataMap) {
+	public Object getList(Object dataMap) {
 		String sqlMapId = "organization.list";
 
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
@@ -44,7 +46,7 @@ public class OrganizationService{
 		
 		String sqlMapId = "organization.merge";
 
-		Object resultKey = (Object) dao.saveObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "organization.read";
 		
@@ -60,7 +62,7 @@ public class OrganizationService{
 
 		sqlMapId = "organization.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
