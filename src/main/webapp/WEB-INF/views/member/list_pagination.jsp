@@ -118,3 +118,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+	<!-- Modal -->        
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	</div>
+	<!-- /.modal -->	                
