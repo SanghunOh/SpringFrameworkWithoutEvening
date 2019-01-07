@@ -14,16 +14,12 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <form role="form" method="POST" action="<c:url value='/commonCode/delete' />">
 					<input type="hidden" name="forwardView" value="/commonCode/list">                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Advanced Tables
 							<button id="layerModal" class="btn btn-primary btn-sm">
                             	Launch Demo Modal with Ajax and Popup
-                            </button>
- 							<button type="submit" class="btn btn-primary btn-sm">
-                            	Delete
                             </button>
                         </div>
                         <!-- /.panel-heading -->
@@ -71,7 +67,6 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    </form>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

@@ -44,7 +44,7 @@ public class OrganizationService{
 		
 		String sqlMapId = "organization.merge";
 
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object resultKey = (Object) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "organization.read";
 		

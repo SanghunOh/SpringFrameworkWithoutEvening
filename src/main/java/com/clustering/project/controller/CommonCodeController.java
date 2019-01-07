@@ -70,4 +70,9 @@ public class CommonCodeController {
 		modelandView.addObject("resultList", resultList);
 		return modelandView;
 	}
+	
+	@RequestMapping(value = MAPPING+"popup", method = { RequestMethod.GET, RequestMethod.POST })
+	public String popupMethod() {
+		return "commonCode/popup";
+	}	
 }

@@ -46,7 +46,7 @@ public class MemberService {
 		
 		String sqlMapId = "member.merge";
 
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object resultKey = (Object) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "member.read";
 		

@@ -34,6 +34,7 @@ public class MemberController {
 
 		String viewName = MAPPING + action ;
 		String forwardView = (String) paramMap.get("forwardView") ;
+		String popupYN = (String) paramMap.get("popupYN") ;
 
 		Map<String, Object> resultMap = new HashMap<String, Object>() ;
 		List<Object> resultList = new ArrayList<Object>();
@@ -57,6 +58,11 @@ public class MemberController {
 			viewName = forwardView;
 		}
 		
+		// Resolves Popup Yes or No
+		if("Yes".equals(popupYN)){
+			viewName = viewName.replaceFirst("/", "");
+		}
+
 		modelandView.setViewName(viewName);
 
 		modelandView.addObject("paramMap", paramMap);

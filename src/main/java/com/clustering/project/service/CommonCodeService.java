@@ -45,7 +45,7 @@ public class CommonCodeService {
 		dataMap.put("MODIFIER_SEQ", "UUID-1111-1111111");
 		
 		String sqlMapId = "commonCode.merge";
-		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
+		Object resultKey = (Object) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "commonCode.read";
 		Object resultObject = dao.getObject(sqlMapId, dataMap);
