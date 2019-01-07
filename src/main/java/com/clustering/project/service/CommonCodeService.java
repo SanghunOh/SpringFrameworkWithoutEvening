@@ -18,10 +18,10 @@ public class CommonCodeService {
 	@Autowired
 	private CommonUtil commonUtil;
 	
-	public List<Object> getList(Object dataMap) {
+	public Object getList(Object dataMap) {
 		String sqlMapId = "commonCode.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 
 		return resultObject;
 	}
@@ -45,7 +45,7 @@ public class CommonCodeService {
 		dataMap.put("MODIFIER_SEQ", "UUID-1111-1111111");
 		
 		String sqlMapId = "commonCode.merge";
-		Object resultKey = (Object) dao.saveObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, dataMap);
 		
 		sqlMapId = "commonCode.read";
 		Object resultObject = dao.getObject(sqlMapId, dataMap);
@@ -60,7 +60,7 @@ public class CommonCodeService {
 
 		sqlMapId = "commonCode.list";
 		
-		List<Object> resultObject = dao.getList(sqlMapId, dataMap);
+		Object resultObject = dao.getList(sqlMapId, dataMap);
 		
 		return resultObject;
 	}
