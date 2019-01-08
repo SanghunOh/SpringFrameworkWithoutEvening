@@ -19,6 +19,9 @@ public class MemberService {
 	@Autowired
 	private CommonUtil commonUtil;
 
+	@Autowired
+	private AuthorityRmemberService authorityRmemberService;
+
 	public Object getList(Object dataMap) {
 		String sqlMapId = "member.list";
 
@@ -51,28 +54,43 @@ public class MemberService {
 	public Object getObject(Object dataMap) {
 		String sqlMapId = "member.read";
 
-		Object resultObject = dao.getObject(sqlMapId, dataMap);
+		Map resultObject = (Map) dao.getObject(sqlMapId, dataMap);
 		
+		// Get Authorities By Member_seq
+		sqlMapId = "authorityRmember.list";
+		resultObject.put("authorityList", dao.getList(sqlMapId, dataMap));
+		
+		// Get Authorities By Member_seq
+		sqlMapId = "attachfile.list";
+		((Map) dataMap).put("SOURCE_UNIQUE_SEQ", ((Map) dataMap).get("MEMBER_SEQ"));
+//		resultObject.put("attachFileList", dao.getList(sqlMapId, dataMap));
+
 		return resultObject;
 	}
 
-	public Object saveObject(Map<String, Object> dataMap) {
-		String uniqueSequence = (String) dataMap.get("MEMBER_SEQ");
+//	@Transactional
+	public Object saveObject(Object dataMap) {
+		Map<String, Object> paramMap = (Map<String, Object>) dataMap;
+		String uniqueSequence = (String) paramMap.get("MEMBER_SEQ");
+		String password = (String) paramMap.get("PASSWORD");
 		
-		if("".equals(uniqueSequence)){
+		if(uniqueSequence == null || "".equals(uniqueSequence)){
 			uniqueSequence = commonUtil.getUniqueSequence();
 		}
-		dataMap.put("MEMBER_SEQ", uniqueSequence);
-		dataMap.put("REGISTER_SEQ", "UUID-1111-1111111");
-		dataMap.put("MODIFIER_SEQ", "UUID-1111-1111111");
+		paramMap.put("MEMBER_SEQ", uniqueSequence);
+		paramMap.put("CRYPT_PASSWORD", commonUtil.PasswordEncoderGenerator(password));
+		paramMap.put("REGISTER_SEQ", "UUID-1111-1111111");
+		paramMap.put("MODIFIER_SEQ", "UUID-1111-1111111");
 		
 		String sqlMapId = "member.merge";
 
-		Object resultKey = dao.saveObject(sqlMapId, dataMap);
-		
-		sqlMapId = "member.read";
-		
-		Object resultObject = dao.getObject(sqlMapId, dataMap);
+		Integer resultKey = (Integer) dao.saveObject(sqlMapId, paramMap);
+
+		// insert Authority by Member
+		authorityRmemberService.insertObject(paramMap);
+
+		// reading member information
+		Map resultObject = (Map) this.getObject(paramMap);
 
 		return resultObject;
 	}

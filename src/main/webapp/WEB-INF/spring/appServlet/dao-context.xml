@@ -34,4 +34,28 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSession" />
 	</bean>    
+
+	<!-- PlatformTransactionManager Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<aop:config>
+		<aop:pointcut id="allServices"
+			expression="execution(* com.clustering.project.service.*.save*(..)) 
+			|| execution(* com.clustering.project.service.Service*.delete*(..))" />
+		<aop:advisor pointcut-ref="allServices" advice-ref="txAdvice" />
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" />
+			<!-- <tx:method name="insert*" /> -->
+			<tx:method name="delete*" />
+			<tx:method name="get*" read-only="true" />
+			<!-- tx:method name="*" / -->
+		</tx:attributes>
+	</tx:advice>
+	
 </beans>
