@@ -44,4 +44,8 @@
 		<put-attribute name="layout.title" value="{1} > {2}" />
 		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
+	<definition name="/*/*/popup" template="/WEB-INF/views/template/layout_popup.jsp">
+		<put-attribute name="layout.title" value="{1} > {2}" />
+		<put-attribute name="layout.body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
 </tiles-definitions>

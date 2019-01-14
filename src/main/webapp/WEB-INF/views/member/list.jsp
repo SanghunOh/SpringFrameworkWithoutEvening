@@ -4,13 +4,21 @@
         $("#layerModal").on("click",function(){
     		fn_selectContentsPop();
     	});
+        $("#layerModalForTiles").on("click",function(){
+        	fn_selectContentsPopup();
+    	});
     });
 
     var fn_selectContentsPop = function(){
 		var url = "<c:url value='/member/edit?popupYN=Yes' />";
 		common.layerPopup(url,"#myModal");
 	};
-    </script>
+
+    var fn_selectContentsPopup = function(){
+		var url = "<c:url value='/member/edit/popup' />";
+		common.layerPopup(url,"#myModal");
+	};
+</script>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -18,7 +26,10 @@
                         <div class="panel-heading">
                             Advanced Tables
 							<button id="layerModal" class="btn btn-primary btn-sm">
-                            	Launch Demo Modal with Ajex and Titles
+                            	Launch Demo Modal with Ajex
+                            </button>
+							<button id="layerModalForTiles" class="btn btn-primary btn-sm">
+                            	Launch Demo Modal with Ajex and Tiles
                             </button>
                         </div>
                         <!-- /.panel-heading -->

@@ -70,4 +70,13 @@ public class MemberController {
 		modelandView.addObject("resultList", resultList);
 		return modelandView;
 	}
+	
+	@RequestMapping(value = MAPPING+"{action}/{popup}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView actionMethodForPopup(@RequestParam Map<String, Object> paramMap, @PathVariable String action,
+			@PathVariable String popup, ModelAndView modelandView) {
+		String viewName = MAPPING + action + "/" + popup;
+		modelandView.setViewName(viewName);
+
+		return modelandView;
+	}
 }
