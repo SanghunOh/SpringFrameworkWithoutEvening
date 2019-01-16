@@ -7,13 +7,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clustering.project.dao.CommonCodeDao;
+import com.clustering.project.dao.OrganizationDao;
 
 @Service
 public class OrganizationService implements ShareService {
 
 	@Autowired
-	private CommonCodeDao dao;
+	private OrganizationDao dao;
 	
 	@Override
 	public List<Object> getList(String sqlMapId, Object dataMap) {
