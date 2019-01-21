@@ -28,7 +28,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-											<th><input type="checkbox" id="selecctall" /></th>
+											<th><input type="checkbox" id="selectall" /></th>
                                             <th>COMMON_CODE_ID</th>
                                             <th>NAME</th>
                                             <th>Update</th>

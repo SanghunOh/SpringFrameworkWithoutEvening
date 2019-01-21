@@ -61,8 +61,16 @@
 			, PARENT_ORGANIZATION_SEQ = #{PARENT_ORGANIZATION_SEQ} 	<!-- 상위 조직 일련번호 -->
 	</insert>
 
-	<delete id="delete" parameterType="Map">
+	<delete id="deleteByKey" parameterType="Map">
 		delete from CIP_ORGANIZATION
 		where ORGANIZATION_SEQ = #{ORGANIZATION_SEQ}
+	</delete>
+
+	<delete id="deleteMultiByKey" parameterType="Map">
+		delete from CIP_ORGANIZATION
+		where ORGANIZATION_SEQ in
+		<foreach collection="ORGANIZATION_SEQ" item="item" index="index" separator="," open="(" close=")">
+			#{item}					<!-- '${ORGANIZATION_SEQ[index]}' -->	
+		</foreach>		
 	</delete>
 </mapper>

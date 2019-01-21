@@ -36,7 +36,7 @@ public class OrganizationService{
 		return resultObject;
 	}
 
-	public Object saveObject(Map<String, Object> dataMap) {
+	public Object saveObject(Map<Object, Object> dataMap) {
 		String uniqueSequence = (String) dataMap.get("ORGANIZATION_SEQ");
 		
 		if("".equals(uniqueSequence)){
@@ -56,7 +56,15 @@ public class OrganizationService{
 	}
 
 	public Object deleteObject(Object dataMap) {
-		String sqlMapId = "organization.delete";
+		Object campareObject = ((Map)dataMap).get("ORGANIZATION_SEQ");
+
+		String sqlMapId = null;
+
+		if(campareObject instanceof String) {
+			sqlMapId = "organization.deleteByKey";
+		} else {
+			sqlMapId = "organization.deleteMultiByKey";
+		}
 
 		Integer resultKey = (Integer) dao.deleteObject(sqlMapId, dataMap);
 

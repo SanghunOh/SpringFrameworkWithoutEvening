@@ -52,7 +52,7 @@
                 ,"info":     false */
         });
 
-        $("#selecctall").change(function() {
+        $("#selectall").change(function() {
 			$(".checkbox").prop('checked', $(this).prop("checked"));
 		});
 

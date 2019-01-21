@@ -15,6 +15,12 @@
 							<button id="layerModal" class="btn btn-primary btn-sm">
                             	Launch Demo Modal with jQuery
                             </button>
+                    <form role="form" method="POST" action="<c:url value='/organization/delete' />">
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">
+                            	Delete
+                            </button>
+                            
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -22,7 +28,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-											<th><input type="checkbox" id="selecctall" /></th>
+											<th><input type="checkbox" id="selectall" /></th>
                                             <th>ORGANIZATION_SEQ</th>
                                             <th>NAME</th>
                                             <th>TELEPHONE</th>
@@ -65,6 +71,7 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+                    </form>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
