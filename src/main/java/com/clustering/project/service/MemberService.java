@@ -33,11 +33,11 @@ public class MemberService {
 		String sqlMapId = "member.totalcount";
 
 		int totalCount = (int) dao.getObject(sqlMapId, dataMap);
-		int currentrentPage = 1 ; 
+		int currentPage = 1 ; 
 		if(((Map<String,Object>) dataMap).get("currentPage") != null) {
-			currentrentPage = Integer.valueOf(((Map<String, String>) dataMap).get("currentPage"));
+			currentPage = Integer.valueOf(((Map<String, String>) dataMap).get("currentPage"));
 		}
-		Pagination pagination = new Pagination(totalCount, currentrentPage);
+		Pagination pagination = new Pagination(totalCount, currentPage);
 		resultMap.put("pagination", pagination);
 		
 		sqlMapId = "member.listpagination";
