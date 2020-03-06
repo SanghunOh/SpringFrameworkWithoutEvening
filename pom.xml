@@ -14,7 +14,7 @@
 		<org.aspectj-version>1.8.0</org.aspectj-version>
 		<org.slf4j-version>1.7.7</org.slf4j-version>
 		<org.apach.tiles-version>3.0.5</org.apach.tiles-version>
-		<org.springframework.security-version>5.1.2.RELEASE</org.springframework.security-version>
+		<org.springframework.security-version>5.3.0.RELEASE</org.springframework.security-version>
 		<jackson.databind-version>2.9.8</jackson.databind-version>
 		<org.mybatis.version>3.3.0</org.mybatis.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
