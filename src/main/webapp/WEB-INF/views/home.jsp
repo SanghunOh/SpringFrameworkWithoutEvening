@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<c:url value='/' />">Clustering Incubation Center</a>
+                <a class="navbar-brand" href="<c:url value='/' />">Clustering Incubation Center01</a>
             </div>
             <!-- /.navbar-header -->
 
